@@ -29,11 +29,11 @@ jobs:
       - name: Publish .NET Core Project
         run: dotnet publish -c:Release -p:GHPages=true -o dist/BeyondTheLabel --nologo
      
-      # - name: Rewrite base href
-      #   uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
-      #   with:
-      #     html_path: dist/BeyondTheLabel/wwwroot/app/index.html
-      #     base_href: /app/
+      - name: Rewrite base href
+        uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
+        with:
+          html_path: dist/BeyondTheLabel/wwwroot/index.html
+          base_href: /app/
 
       - name: Commit wwwroot to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
