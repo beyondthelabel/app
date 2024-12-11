@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "TArkMFiJ",
+  "version": "kt1j9BfK",
   "assets": [
     {
       "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
@@ -14,8 +14,8 @@ self.assetsManifest = {
       "url": "BeyondTheLabel.styles.css"
     },
     {
-      "hash": "sha256-Qmo7P8wPx0J/VnQAK0VQuhdZWqlnrflfiZ3i0OEZ3Mc=",
-      "url": "_framework/BeyondTheLabel.qe7ju80vuk.wasm"
+      "hash": "sha256-LCrZuJBpm1JMuN31a3qeiD9PiprFXSUxQjkKB7vTOPk=",
+      "url": "_framework/BeyondTheLabel.kq7wb8vtjo.wasm"
     },
     {
       "hash": "sha256-3ggMPV7lT/AEUSoRbQIG6C30u/kbo4qQUOUzXIuUrp0=",
@@ -138,7 +138,7 @@ self.assetsManifest = {
       "url": "_framework/System.Text.RegularExpressions.gl65p7jdfx.wasm"
     },
     {
-      "hash": "sha256-bbh3srAb5gXOu1JOq9nPBejadI9l0kPk7V6yJ1YwdC4=",
+      "hash": "sha256-MeYcfYzJlYg3FJ69Xh0VzJ/HGwT0w2pfAemg2rt+jWE=",
       "url": "_framework/blazor.boot.json"
     },
     {
