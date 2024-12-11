@@ -28,6 +28,12 @@ jobs:
       # Publishes Blazor project to the release-folder
       - name: Publish .NET Core Project
         run: dotnet publish -c:Release -p:GHPages=true -o dist/BeyondTheLabel --nologo
+     
+      - name: Rewrite base href
+        uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
+        with:
+          html_path: ${{ env.PUBLISH_DIR }}/index.html
+          base_href: /app/
 
       - name: Commit wwwroot to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
