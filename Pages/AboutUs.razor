@@ -1,0 +1,143 @@
+﻿@page "/about-us"
+
+<style>
+
+
+    .icon {
+        font-size: 3rem;
+        color: #6c757d;
+        margin-bottom: 20px;
+    }
+
+    h1, h2 {
+        text-align: center;
+        margin: 0 0 20px;
+    }
+
+    p {
+        text-align: justify;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .profile-picture {
+        width: 350px;
+        height: 350px;
+/*         border-radius: 50%;
+ */        margin: 20px auto;
+        display: block;
+    }
+
+    .social-links {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+        .social-links a {
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: #6c757d;
+            text-decoration: none;
+        }
+
+            .social-links a:hover {
+                color: #007bff;
+            }
+
+    .icon {
+        font-size: 3rem;
+        color: #6c757d; /* Default color */
+        margin-bottom: 20px;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+        .icon i {
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .icon:hover {
+            color: #007bff; /* Change color on hover */
+            transform: scale(1.1); /* Slight zoom effect on hover */
+        }
+
+</style>
+
+<div>
+    <section id="welcome" class="container">
+        <img src="/media/images/jada_augustine.jpg" alt="Jada Augustine" class="profile-picture">
+        <h1>Founder and CEO</h1>
+        <p>My name is Jada Augustine, and I am passionate about making an impact, preserving culture, and fostering growth within communities.</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/jada-augustine-46b1452b0/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/jadasgotyourbackpack/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </section>
+
+    <section id="journey" class="container">
+        <div class="icon"><i class="fas fa-route"></i></div>
+        <h2>My Journey</h2>
+        <p>I’ve been fortunate to achieve incredible milestones throughout my life, including studying abroad in Cambodia. This experience allowed me to work with diverse races and ethnic groups, broadening my perspective and enhancing my ability to connect with people from all walks of life. Additionally, I have received high honors in Speech-Language Pathology through the MSLP program and was recognized as a torch holder for the National Black Association for Speech-Language Pathology and Hearing.</p>
+    </section>
+
+    <section id="academics" class="container">
+        <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+        <h2>Academic Excellence</h2>
+        <p>I hold a Bachelor’s degree in Speech-Language Pathology with a minor in Child Development from California State University, Long Beach (CSULB), and a Master’s degree from Howard University, the number one historically Black college. I am pursuing a PhD in Special Education through a joint program between the University of California, Los Angeles (UCLA) and California State University, Los Angeles (CSULA), focusing on Human Development and Psychology with an emphasis on Special Education.</p>
+    </section>
+
+    <section id="research" class="container">
+        <div class="icon"><i class="fas fa-flask"></i></div>
+        <h2>Research Focus</h2>
+        <p>My research centers on autistic preschoolers, specifically Black students in Los Angeles and Belize. I am also deeply interested in studying Black special educators and the factors contributing to their attrition. Through my work, I aim to bridge gaps in special education and create more inclusive and supportive environments for students and educators.</p>
+    </section>
+
+    <section id="roots" class="container">
+        <div class="icon"><i class="fas fa-tree"></i></div>
+        <h2>My Roots</h2>
+        <p>I take immense pride in my Garifuna heritage and my deep connection to Belize, a bond inspired by my grandmother's love for our culture and her pride in our country. Belize is more than a homeland; it’s a cornerstone of my identity. I actively share my culture with my inner circle, ensuring its legacy continues through education, storytelling, and meaningful experiences.</p>
+    </section>
+
+    <section id="giving" class="container">
+        <div class="icon"><i class="fas fa-hands-helping"></i></div>
+        <h2>Giving Back</h2>
+        <p>Nine years ago, I founded a non-profit organization in Belize to address critical resource gaps for children in underserved communities. Through this initiative, we’ve empowered over 150 children with access to essential resources, inspiring guest speakers, and dedicated team efforts. Seeing these children thrive and dream big fuels my commitment to serve and uplift others.</p>
+    </section>
+
+    <section id="vision" class="container">
+        <div class="icon"><i class="fas fa-eye"></i></div>
+        <h2>My Vision</h2>
+        <p>I believe in the power of education, culture, and community to create meaningful change. Whether it’s through my work in Belize, sharing my Garifuna heritage, or connecting with like-minded individuals, my goal is to leave a lasting legacy that uplifts and inspires. My research aims to bridge gaps in special education, particularly for Black students and educators, ensuring that every child has the opportunity to succeed.</p>
+    </section>
+
+</div>
+
+<script>
+    try {
+        // Select all sections
+        const sections = document.querySelectorAll("section");
+
+        // Intersection Observer logic
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe each section
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    } catch (error) {
+        console.error("Error observing sections:", error);
+    }
+</script>

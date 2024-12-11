@@ -1,16 +1,102 @@
 ﻿@inherits LayoutComponentBase
+<style>
+        /* Wrapper to ensure the banner stays visible and confines the text */
+    .banner-wrapper {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        background-color: #57b8ff;
+        color: white;
+        padding: 10px 0;
+        position: relative;
+    }
+
+    /* Text that will scroll */
+    .banner-text {
+        display: inline-block;
+        padding-left: 50%;
+        animation: scrollBanner 35s linear infinite; /* Adjusted speed to 30 seconds */
+    }
+
+    /* Keyframes to control the scrolling animation */
+    @@keyframes scrollBanner {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+        <div class="banner-wrapper">
+            <div class="banner-text">
+                Welcome to Jada's Backpack! We have the best deals in town! Stay tuned for more!
+            </div>
+        </div>
+        <div>
+            <header>
+                <nav class="navbar navbar-light navbar-expand-lg bg-body-tertiary">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#" style="margin-right: 10%">
+                            <img src="https://st2.depositphotos.com/1768926/7866/v/450/depositphotos_78666192-stock-illustration-a-logo-sample-logo-for.jpg"
+                                 alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                            BeyondTheLabel
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarScroll">
+                            <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Services</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about-us">About Us</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
         </div>
 
         <article class="content px-4">
             @Body
         </article>
+
+
+        <footer style="background-color: #f8f9fa; padding: 40px 0; border-top: 1px solid #ddd;">
+            <div class="container">
+                <section class="contact-section text-center">
+                    <h2 style="font-size: 24px; font-weight: 600; margin-bottom: 20px;">Get in Touch</h2>
+                    <div style="margin-bottom: 20px;">
+                        <a href="https://calendly.com/beyondthelabellosangeles" target="_blank" class="btn btn-primary" style="margin: 5px;">📅 Book a Meeting</a>
+                        <a href="mailto:your.email@example.com" class="btn btn-outline-primary" style="margin: 5px;">📧 Email Me</a>
+                    </div>
+                    <p class="text-center" style="font-size: 14px; color: #6c757d;">Looking forward to connecting with you! Feel free to reach out.</p>
+                </section>
+            </div>
+        </footer>
+
     </main>
 </div>
+@code {
+    private bool collapseNavMenu = true;
+
+    // Dynamically apply collapse class based on toggle state
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    // Method to toggle the collapse class
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
