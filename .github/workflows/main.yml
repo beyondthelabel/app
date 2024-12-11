@@ -32,7 +32,7 @@ jobs:
       - name: Rewrite base href
         uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
         with:
-          html_path: dist/BeyondTheLabel/wwwroot/index.html
+          html_path: dist/BeyondTheLabel/wwwroot/app/index.html
           base_href: /app/
 
       - name: Commit wwwroot to GitHub Pages
