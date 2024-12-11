@@ -155,3 +155,21 @@ section {
         opacity: 1;
         transform: translateY(0);
     }
+
+
+.navbar {
+    background: linear-gradient(to right, #2176AE, #57B8FF, #EF931A, #FBB13C, #FD5A35);
+    color: white;
+    padding: 10px 20px;
+}
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        margin-right: 15px;
+        font-weight: bold;
+    }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
