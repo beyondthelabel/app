@@ -17,7 +17,7 @@ a, .btn-link {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 .content {
@@ -40,7 +40,6 @@ a, .btn-link {
     background: lightyellow;
     bottom: 0;
     box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box;
     display: none;
     left: 0;
     padding: 0.6rem 1.25rem 0.7rem 1.25rem;
@@ -102,3 +101,75 @@ a, .btn-link {
 code {
     color: #c02d76;
 }
+
+.cute-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.cute-loading-img {
+    width: 150px;
+    height: auto;
+    animation: bounce 1.5s infinite;
+}
+
+.cute-loading-text {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 1.2em;
+    color: #FF69B4; /* Pink color for a playful touch */
+    margin-top: 10px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-30px);
+    }
+
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+
+@media (min-width: 992px) { /* 'lg' breakpoint in Bootstrap */
+    .margin-start-lg-20 {
+        margin-left: 20%; /* Your custom percentage */
+    }
+}
+/* Scroll Animation Styles */
+section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+    section.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+.navbar {
+    background: linear-gradient(to right, #2176AE, #57B8FF, #EF931A, #FBB13C, #FD5A35);
+    color: white;
+    padding: 10px 20px;
+}
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        margin-right: 15px;
+        font-weight: bold;
+    }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
