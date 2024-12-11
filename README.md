@@ -51,6 +51,7 @@ BeyondTheLabel is an open-source initiative. While anyone can report bugs and su
 ## References 
 https://learn.microsoft.com/en-us/aspnet/core/blazor/host-and-deploy/webassembly?view=aspnetcore-9.0
 
+https://ilovedotnet.org/blogs/blazor-wasm-publishing-to-github-pages/
 ## Contact Us
 
 - **Email**: [beyondthelabellosangeles@gmail.com](mailto:beyondthelabellosangeles@gmail.com)
