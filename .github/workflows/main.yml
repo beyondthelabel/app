@@ -27,10 +27,10 @@ jobs:
           
       # Publishes Blazor project to the release-folder
       - name: Publish .NET Core Project
-        run: dotnet publish ./Web/Web.csproj -c:Release -p:GHPages=true -o dist/Web --nologo
+        run: dotnet publish ./BeyondTheLabel/BeyondTheLabel.csproj -c:Release -p:GHPages=true -o dist/BeyondTheLabel --nologo
 
       - name: Commit wwwroot to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           BRANCH: gh-pages
-          FOLDER: dist/Web/wwwroot
+          FOLDER: dist/BeyondTheLabel/wwwroot
