@@ -4,138 +4,137 @@
 <style>
     /* General Styles */
     body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
+    margin: 0;
+    padding: 0;
     }
 
     /* Introduction Section */
     .intro-section {
-        position: relative;
-        height: 100vh;
-        overflow: hidden;
-        color: white;
-        text-align: center;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    color: white;
+    text-align: center;
     }
 
     .background-video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
     }
 
     .intro-content {
-        position: relative;
-        z-index: 1;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 100%;
+    position: relative;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
     }
 
     .intro-section h1 {
-        font-size: 3rem;
+    font-size: 3rem;
     }
 
     .intro-section p {
-        font-size: 1.2rem;
+    font-size: 1.2rem;
     }
 
     /* Skills Section */
     .skills-section {
-        padding: 50px 0;
-        background-color: #f8f9fa;
-        text-align: center;
+    padding: 50px 0;
+    background-color: #f8f9fa;
+    text-align: center;
     }
 
     .skills-section h2 {
-        margin-bottom: 30px;
+    margin-bottom: 30px;
     }
 
     .skill-box {
-        background-color: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        transition: transform 0.3s ease;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease;
     }
 
     .skill-box:hover {
-        transform: translateY(-10px);
+    transform: translateY(-10px);
     }
 
     /* Projects Section */
     .projects-section {
-        padding: 50px 0;
-        text-align: center;
+    padding: 50px 0;
+    text-align: center;
     }
 
     .projects-section h2 {
-        margin-bottom: 30px;
+    margin-bottom: 30px;
     }
 
     .project-card {
-        background-color: #f8f9fa;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        margin-bottom: 30px;
-        padding: 20px;
-        transition: transform 0.3s ease;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+    transition: transform 0.3s ease;
     }
 
     .project-card:hover {
-        transform: translateY(-10px);
+    transform: translateY(-10px);
     }
 
     .project-card h4 {
-        font-size: 1.5rem;
+    font-size: 1.5rem;
     }
 
     .project-card a {
-        margin-top: 10px;
+    margin-top: 10px;
     }
 
     /* Contact Section */
     .contact-section {
-        padding: 50px 0;
-        background-color: #f8f9fa;
-        text-align: center;
+    padding: 50px 0;
+    background-color: #f8f9fa;
+    text-align: center;
     }
 
     .contact-section h2 {
-        margin-bottom: 20px;
+    margin-bottom: 20px;
     }
 
     .contact-section p {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
     }
 
     .contact-section .btn {
-        margin-top: 10px;
+    margin-top: 10px;
     }
 
     .hero-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     }
 
     .highlight-bar {
-        width: 80px;
-        height: 4px;
-        background-color: #6a1b9a;
-        margin: 20px auto;
+    width: 80px;
+    height: 4px;
+    background-color: #6a1b9a;
+    margin: 20px auto;
     }
 
     .description {
-        font-size: 1.2rem;
-        line-height: 1.8;
-        margin-top: 20px;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-top: 20px;
     }
 
 
@@ -152,58 +151,45 @@
 
         <!-- Overlay Content -->
         <div class="intro-content">
-            <h1 class="hero-title">Welcome to <br /> <span class="text-dark">Beyond</span> <span class="text-primary">The</span> <span class="text-secondary">Label</span></h1>
+            <h1 class="hero-title">
+                Welcome to <br />
+                <span class="text-dark">Beyond the Label</span> <br />
+                <span class="text-primary">Advocacy</span> and <span class="text-secondary">Speech Therapy, PC</span>
+            </h1>
 
-            @*             <h1>Welcome! My name is <strong>Jada Augustine</strong></h1>
-            <p class="lead">I am passionate about making an impact, preserving culture, and fostering growth within communities.</p>
-            <p>
-            Through my work, I strive to bridge gaps in education, celebrate heritage, and create meaningful change that uplifts individuals and communities alike.
-            </p> *@
         </div>
 
     </section>
     <section id="description">
         <div class="container mt-5">
-            @*             <div class="text-center">
-            <h1 class="hero-title">Welcome to <br /> <span class="text-dark">Beyond The Label</span></h1>
-            <div class="highlight-bar"></div>
-            </div> *@
+
             <div class="mt-4">
                 <p class="description">
-                    <strong>Beyond The Label</strong> is an international speech-language pathology practice offering virtual
-                    speech therapy sessions across the United States. Headquartered in Atlanta, GA, we're dedicated to
-                    providing top-tier therapeutic interventions for individuals of all ages and abilities. Since our
-                    founding as a clinical practice in 2016, Beyond The Label has evolved into a multifaceted organization,
-                    offering healthcare, therapy, professional development, and educational, business, and career services.
-                    Our team provides comprehensive virtual and in-person services committed to enhancing personal and
-                    professional growth.
+                    <strong>Beyond the Label Advocacy and Speech Therapy, PC</strong> is a premier speech and language pathology practice based in West Los Angeles, California. Founded by <strong>Jada Augustine</strong> in 2021, the practice is dedicated to providing exceptional speech therapy sessions and advocacy support tailored to meet the unique needs of every client. With a particular emphasis on cultural and linguistic diversity, Beyond the Label fosters an inclusive environment that celebrates the rich backgrounds of its clients.
                 </p>
                 <p class="description">
-                    Our service locations include Washington, D.C., Maryland, Virginia, Georgia, Louisiana, California,
-                    North Carolina, New Jersey, Arizona, and Maine.
+                    The practice specializes in helping individuals navigate the complexities of the Individualized Education Plan (IEP) process, offering clear guidance and support to ensure clients fully understand their rights and options. While Beyond the Label serves clients of all ages, its primary focus is on early intervention and high school students, addressing key developmental and academic milestones.
+                </p>
+                <p class="description">
+                    Beyond the Label originated as a project in Belize, Central America, bridging resource gaps in underserved communities. Building on this foundation, the practice expanded its reach to Los Angeles, delivering both virtual and in-person services designed to enhance personal and professional growth.
+                </p>
+                <p class="description">
+                    Founder <strong>Jada Augustine</strong> brings over a decade of experience in special education to the practice, working extensively with diverse ethnic groups throughout her career. She began as a paraprofessional in school districts such as Compton, Long Beach, Cypress, Torrance, and Houston. Jada’s global perspective is enriched by her international studies and professional work in Cambodia, Vietnam, and Thailand, where she gained valuable insights into cultural and linguistic nuances. These experiences have shaped her passion for creating equitable educational and therapeutic opportunities, forming the cornerstone of Beyond the Label’s mission.
+                </p>
+                <p class="description">
+                    At Beyond the Label Advocacy and Speech Therapy, PC, the team is committed to delivering high-quality care, empowering individuals, honoring diverse cultural and linguistic backgrounds, and providing clients with the tools they need to thrive.
+                </p>
+                <p class="description">
+                    <strong>Important Information:</strong>
+                    <ul>
+                        <li><strong>No Insurance Accepted:</strong> Beyond the Label operates on a private-pay basis.</li>
+                        <li><strong>Early Intervention Services:</strong> Clients requiring early intervention must be referred through the regional center to access our services.</li>
+                    </ul>
                 </p>
             </div>
+
         </div>
     </section>
-
-    <!-- Skills Section -->
-    @*     <section class="skills-section">
-    <div class="container">
-    <h2>Skills</h2>
-    <div class="row">
-    @foreach (var skill in skills)
-    {
-    <div class="col-md-4">
-    <div class="skill-box">
-    <i class="bi bi-check-circle"></i>
-    <h4>@skill.Name</h4>
-    <p>@skill.Description</p>
-    </div>
-    </div>
-    }
-    </div>
-    </div>
-    </section> *@
 
     <!-- Projects Section -->
     <section id="projects" class="projects-section">
@@ -213,14 +199,11 @@
                 @foreach (var project in projects)
                 {
                     <div class="col">
-                        <div class="card h-100 project-card">
-                            <!-- <img src="..." class="card-img-top" alt="..."> -->
-                            <div class="card-body">
-                                <h5 class="card-title">@project.Title</h5>
+                        <div class="card h-100 project-card" style="background: @project.Color; color: #fff; position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+                            <div class="card-body" style="position: relative; z-index: 1;">
+                                <h5 class="card-title" style="font-weight: bold;">@project.Title</h5>
                                 <p class="card-text">@project.Description</p>
-                            </div>
-                            <div class="card-footer">
-                                <button class="btn btn-primary">Learn More</button>
                             </div>
                         </div>
                     </div>
@@ -228,6 +211,7 @@
             </div>
         </div>
     </section>
+
 
     <section id="calendy">
         <!-- Calendly inline widget begin -->
@@ -248,15 +232,48 @@
     };
 
     // Sample projects data
+
     private List<Project> projects = new List<Project>
-    {
-        new Project { Title = "What we do example 1", Description = "Another awesome project using Blazor.", Link = "https://example.com/project2" },
-        new Project { Title = "What we do example 2", Description = "Mobile app built using Xamarin.", Link = "https://example.com/project3" },
-        new Project { Title = "What we do example 3", Description = "Mobile app built using Xamarin.", Link = "https://example.com/project3" },
-        new Project { Title = "What we do example 4", Description = "Mobile app built using Xamarin.", Link = "https://example.com/project3" },
-        new Project { Title = "What we do example 5", Description = "Mobile app built using Xamarin.", Link = "https://example.com/project3" },
-        new Project { Title = "What we do example 6", Description = "Mobile app built using Xamarin.", Link = "https://example.com/project3" }
-    };
+{
+    new Project {
+        Title = "Comprehensive Speech Therapy Services",
+        Description = "Tailored speech and language therapy services to meet individual needs.",
+        Link = "https://example.com/speech-therapy-services",
+        Color = "#6CAEE0" // Lightened Blue
+    },
+    new Project {
+        Title = "Virtual Teletherapy",
+        Description = "Flexible online therapy sessions accessible from home.",
+        Link = "https://example.com/virtual-teletherapy",
+        Color = "#A3D4FF" // Lighter Blue
+    },
+    new Project {
+        Title = "Early Intervention Services",
+        Description = "Support for early developmental milestones.",
+        Link = "https://example.com/early-intervention",
+        Color = "#F3C372" // Light Warm Yellow
+    },
+    new Project {
+        Title = "High School Therapy Services",
+        Description = "Targeted services for high school students to achieve academic and social goals.",
+        Link = "https://example.com/high-school-therapy",
+        Color = "#FFC970" // Light Orange
+    },
+    new Project {
+        Title = "IEP Advocacy and Support",
+        Description = "Guidance through the IEP process to ensure clients understand their rights.",
+        Link = "https://example.com/iep-advocacy",
+        Color = "#FF8E72" // Light Red-Orange
+    },
+    new Project {
+        Title = "Cultural and Linguistic Diversity Services",
+        Description = "Inclusive services celebrating diverse cultural and linguistic backgrounds.",
+        Link = "https://example.com/cultural-diversity-services",
+        Color = "#FF9980" // Lighter Coral
+    }
+};
+
+
 
     // Classes for managing skills and projects
     private class Skill
@@ -270,6 +287,7 @@
         public string Title { get; set; }
         public string Description { get; set; }
         public string Link { get; set; }
+        public string Color { get; set; }
     }
 }
 
