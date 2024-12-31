@@ -1,5 +1,23 @@
 ﻿@inherits LayoutComponentBase
 <style>
+    .navbar-light .navbar-nav .nav-link.dropdown-toggle {
+        color: #000; /* Adjust to your desired color */
+    }
+
+    .navbar-light .navbar-nav .dropdown-menu {
+        background-color: #fff; /* Background color for dropdown */
+        border: 1px solid #ddd; /* Optional: adds a border */
+    }
+
+        .navbar-light .navbar-nav .dropdown-menu .dropdown-item {
+            color: #000; /* Color of dropdown items */
+        }
+
+            .navbar-light .navbar-nav .dropdown-menu .dropdown-item:hover {
+                background-color: #f8f9fa; /* Background on hover */
+                color: #007bff; /* Text color on hover */
+            }
+
         /* Wrapper to ensure the banner stays visible and confines the text */
     .banner-wrapper {
         width: 100%;
@@ -29,6 +47,60 @@
     }
 
 </style>
+<style>
+    .footer {
+        background-color: #f8f9fa;
+        padding: 40px 0;
+        border-top: 1px solid #ddd;
+        margin-top: 2em;
+    }
+
+    .footer-heading {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .footer-buttons a {
+        margin: 5px;
+    }
+
+    .social-links {
+        margin: 20px 0;
+    }
+
+    .social-icon {
+        margin: 0 10px;
+        font-size: 1.5rem;
+        color: #6c757d;
+        text-decoration: none;
+    }
+
+        .social-icon:hover {
+            color: #007bff;
+        }
+
+    .footer-message {
+        font-size: 14px;
+        color: #6c757d;
+        margin-top: 10px;
+    }
+
+    .footer-credits p {
+        font-size: 14px;
+        color: #6c757d;
+        margin-top: 30px;
+    }
+
+    .footer-link {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+</style>
 <div class="page">
 
     <main>
@@ -37,7 +109,7 @@
                 <nav class="navbar navbar-light navbar-expand-lg bg-body-tertiary">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="#" style="margin-right: 10%">
-                            <img src="https://st2.depositphotos.com/1768926/7866/v/450/depositphotos_78666192-stock-illustration-a-logo-sample-logo-for.jpg"
+                            <img src="media/images/beyondthelabel.jpg"
                                  alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                             BeyondTheLabel
                         </a>
@@ -49,11 +121,25 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                                 </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Patient Portal
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item text-truncate" target="_blank" href="https://forms.gle/Bq5CGMmrjWvLkySXA">Case History</a></li>
+                                        <li><a class="dropdown-item text-truncate" target="_blank" href="https://forms.gle/zhF1rTfDx9MsUJvGA">Injury Waiver</a></li>
+                                        <li><a class="dropdown-item text-truncate" target="_blank" href="https://forms.gle/4S6SbNyLQZ3yuBYTA">Media Release</a></li>
+                                        <li><a class="dropdown-item text-truncate" target="_blank" href="https://forms.gle/kigeevpzpMkuo9Mq8">Parent Consent</a></li>
+                                        <li><a class="dropdown-item text-truncate" target="_blank" href="https://forms.gle/MLis7DuAhqv1FNhu7">Allergy Waiver</a></li>
+                                        <li><a class="dropdown-item text-truncate" target="_blank" href="https://forms.gle/YDAacvsx7kuTWtwi7">Privacy Policy</a></li>
+                                    </ul>
+                                </li>
+
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Services</a>
+                                    <a class="nav-link active" href="about-us">About Us</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="about-us">About Us</a>
+                                    <a class="nav-link active" href="international-outreach">International Outreach</a>
                                 </li>
                             </ul>
                         </div>
@@ -67,19 +153,43 @@
         </article>
 
 
-        <footer style="background-color: #f8f9fa; padding: 40px 0; border-top: 1px solid #ddd;">
+        <footer class="footer">
             <div class="container">
                 <section class="contact-section text-center">
-                    <h2 style="font-size: 24px; font-weight: 600; margin-bottom: 20px;">Get in Touch</h2>
-                    <div style="margin-bottom: 20px;">
-                        <a href="https://calendly.com/beyondthelabellosangeles" target="_blank" class="btn btn-primary" style="margin: 5px;">📅 Book a Meeting</a>
-                        <a href="mailto:your.email@example.com" class="btn btn-outline-primary" style="margin: 5px;">📧 Email Me</a>
+                    <h2 class="footer-heading">Get in Touch</h2>
+                    <div class="footer-buttons">
+                        <a href="https://calendly.com/beyondthelabellosangeles" target="_blank" class="btn btn-primary">📅 Book a Meeting</a>
+                        <a href="mailto:your.email@example.com" class="btn btn-outline-primary">📧 Email Me</a>
                     </div>
-                    <p class="text-center" style="font-size: 14px; color: #6c757d;">Looking forward to connecting with you! Feel free to reach out.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/jada-augustine-46b1452b0/" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.instagram.com/beyondthelabelpc/?hl=en" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <p class="footer-message" style="text-align:center;">Looking forward to connecting with you! Feel free to reach out.</p>
+                </section>
+                <section class="footer-credits text-center">
+                    <p style="text-align:center;">
+                        Built by <a href="mailto:ucrengineerpy@gmail.com" class="footer-link">Moffett Consulting</a>
+                    </p>
                 </section>
             </div>
         </footer>
 
+@*         <!-- Start of OpenWidget (www.openwidget.com) code -->
+        <script>
+            window.__ow = window.__ow || {};
+            window.__ow.organizationId = "bb4a865f-7dea-45b0-9b5a-7067e191eb40";
+            window.__ow.integration_name = "manual_settings";
+            window.__ow.product_name = "openwidget";
+            ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[OpenWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.openwidget.com/openwidget.js",t.head.appendChild(n)}};!n.__ow.asyncInit&&e.init(),n.OpenWidget=n.OpenWidget||e}(window,document,[].slice))
+        </script>
+        <noscript>You need to <a href="https://www.openwidget.com/enable-javascript" rel="noopener nofollow">enable JavaScript</a> to use the communication tool powered by <a href="https://www.openwidget.com/" rel="noopener nofollow" target="_blank">OpenWidget</a></noscript>
+        <!-- End of OpenWidget code -->
+ *@
     </main>
 </div>
 @code {
