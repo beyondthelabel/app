@@ -1,0 +1,229 @@
+﻿@page "/early-intervention-resources-in-los-angeles"
+
+<style>
+    .card {
+    margin-bottom: 20px;
+    height: 100%;
+    }
+
+    .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    }
+
+    .custom-button {
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        transition: 0.3s;
+    }
+
+        .custom-button:hover {
+            filter: brightness(1.2);
+        }
+
+    /* Projects Section */
+    .projects-section {
+        padding: 50px 0;
+        text-align: center;
+    }
+
+        .projects-section h2 {
+            margin-bottom: 30px;
+        }
+</style>
+
+
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Early Intervention Resources in Los Angeles</h1>
+    <p class="text-center">
+        Early intervention can have a transformative impact on children’s development, especially for those with developmental delays or disabilities.
+        By connecting families to culturally and linguistically diverse (CLD) programs, we can ensure that every child has the opportunity to thrive in an equitable environment.
+    </p>
+
+    <section id="general">
+        <h2 class="projects-section">General Resources</h2>
+        <div class="row">
+            @foreach (var resource in generalResources)
+            {
+                var buttonColor = colors[random.Next(colors.Count)]; // Pick a random color
+
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">@resource.Title</h5>
+                            <p class="card-text">@resource.Description</p>
+                            <a href="@resource.Url" target="_blank" class="custom-button" style="background-color: @buttonColor;">
+                                Learn More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <section id="university" class="mt-4">
+        <h2 class="projects-section">University and College Programs</h2>
+        <div class="row">
+            @foreach (var resource in universityResources)
+            {
+                var buttonColor = colors[random.Next(colors.Count)]; // Pick a random color
+
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">@resource.Title</h5>
+                            <p class="card-text">@resource.Description</p>
+                            <a href="@resource.Url" target="_blank" class="custom-button" style="background-color: @buttonColor;">
+                                Learn More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <section id="cld" class="mt-4">
+        <h2 class="projects-section">Resources for CLD Families</h2>
+        <div class="row">
+            @foreach (var resource in cldResources)
+            {
+                var buttonColor = colors[random.Next(colors.Count)]; // Pick a random color
+
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">@resource.Title</h5>
+                            <p class="card-text">@resource.Description</p>
+                            <a href="@resource.Url" target="_blank" class="custom-button" style="background-color: @buttonColor;">
+                                Learn More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</div>
+
+<script>
+    window.observeSections();
+</script>
+
+@code{
+    public class Resource
+    {
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string Url { get; set; } = string.Empty;
+    }
+
+    private List<string> colors = new List<string>
+    {
+        "#2176AE", "#2B82C5", "#3590DC", "#429EF1", "#4DA8F5", // Blue shades
+        "#57B8FF", "#6FC1FF", "#85CBFF", "#9AD4FF", "#AEDDFE", // Light Blue to Sky Blue
+        "#EF931A", "#F29B29", "#F5A438", "#F7AD48", "#FAB657", // Orange shades
+        "#FBB13C", "#FCB94D", "#FCC15D", "#FDCA6E", "#FED27E", // Yellow-Orange
+        "#FD5A35", "#FE6A48", "#FE7A5A", "#FF8A6D", "#FF9A7F"  // Red-Orange to Coral
+    };
+
+    private Random random = new Random();
+
+    private List<Resource> generalResources = new List<Resource>
+    {
+        new Resource
+        {
+            Title = "California Early Start Program",
+            Description = "Free services for children aged 0–3 with developmental delays or disabilities. Services are coordinated through regional centers and public school districts.",
+            Url = "https://www.dds.ca.gov/services/early-start/"
+        },
+        new Resource
+        {
+            Title = "First 5 LA – Help Me Grow",
+            Description = "Connects families to early developmental resources, available in multiple languages to meet the needs of CLD communities.",
+            Url = "https://www.first5la.org/help-me-grow/"
+        }
+    };
+
+    private List<Resource> universityResources = new List<Resource>
+    {
+        new Resource
+        {
+            Title = "UCLA Intervention Program",
+            Description = "Provides play-based therapy and family support for infants and toddlers with developmental delays.",
+            Url = "https://www.uclahealth.org/departments/pediatrics/intervention-program"
+        },
+        new Resource
+        {
+            Title = "California State University, Northridge (CSUN) Early Start Services",
+            Description = "Offers developmental support and therapy for young children, incorporating culturally responsive approaches.",
+            Url = "https://www.csun.edu/language-speech-hearing-center/early-start-services-and-early-intervention-program"
+        },
+        new Resource
+        {
+            Title = "Cal State LA – Center for Excellence in Early Intervention",
+            Description = "Focuses on culturally inclusive best practices in early intervention and provides training for professionals.",
+            Url = "https://www.calstatela.edu/academic/ccoe/centers-and-institutes"
+        },
+        new Resource
+        {
+            Title = "Community College Child Development Programs",
+            Description = "Los Angeles-area community colleges, such as Pierce College, Southwest College, and East Los Angeles College, offer programs that prepare students to work with children in early childhood settings.",
+            Url = "https://www.calstatela.edu/academic/ccoe/centers-and-institutes"
+        }
+    };
+
+    private List<Resource> cldResources = new List<Resource>
+    {
+        new Resource
+        {
+            Title = "Korean American Special Education Center (KASEC)",
+            Description = "Offers early detection and intervention services tailored to the needs of Korean American families.",
+            Url = "https://kasecca.org/early-intervention/?lang=en"
+        },
+        new Resource
+        {
+            Title = "Koreatown Youth and Community Center (KYCC)",
+            Description = "Provides prevention and early intervention services, employing culturally sensitive approaches.",
+            Url = "https://www.kyccla.org/services/clinical-services/our-programs/"
+        },
+        new Resource
+        {
+            Title = "Centro de Niños y Padres",
+            Description = "A bilingual (Spanish-English) program offering services to infants and toddlers at risk for developmental delays.",
+            Url = "http://www.centrodeninos.org/centro_programs.htm"
+        },
+        new Resource
+        {
+            Title = "Proyecto Pastoral at Dolores Mission",
+            Description = "Provides early childhood education programs tailored to families in Boyle Heights.",
+            Url = "https://www.dolores-mission.org/"
+        },
+        new Resource
+        {
+            Title = "Black Infant Health (BIH) Program",
+            Description = "Supports families with culturally affirming prenatal and postpartum care to improve developmental outcomes for infants.",
+            Url = "https://www.cdph.ca.gov/Programs/CFH/DMCAH/BIH/Pages/default.aspx"
+        },
+        new Resource
+        {
+            Title = "Black Infants and Families Los Angeles",
+            Description = "A coalition dedicated to improving birth outcomes for Black infants and providing early support to families.",
+            Url = "https://www.blackinfantsandfamilies.org/"
+        },
+        new Resource
+        {
+            Title = "Parenting Black Babies – Access Nonprofit Center",
+            Description = "Provides family-centered, culturally sensitive services for families of children with developmental challenges.",
+            Url = "https://accessnonprofit.org/parenting-black-babies"
+        }
+    };
+}
