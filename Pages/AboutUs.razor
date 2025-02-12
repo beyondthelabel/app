@@ -135,24 +135,5 @@
 </div>
 
 <script>
-    try {
-        // Select all sections
-        const sections = document.querySelectorAll("section");
-
-        // Intersection Observer logic
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                }
-            });
-        }, { threshold: 0.1 });
-
-        // Observe each section
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    } catch (error) {
-        console.error("Error observing sections:", error);
-    }
+    window.observeSections();
 </script>
