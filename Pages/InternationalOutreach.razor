@@ -1,30 +1,51 @@
 ﻿@page "/international-outreach"
 
+<style>
+    .carousel-inner img {
+        height: 400px; /* Adjust height as needed */
+        object-fit: cover;
+    }
+</style>
+
 <div style="max-width: 600px; margin: auto;">
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="6" aria-label="Slide 7"></button>
+        </div>
+
+        <!-- Carousel Items -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="media/images/photo_1.jpg" class="d-block w-100" alt="...">
+                <img src="media/images/photo_1.jpg" class="d-block w-100" alt="Photo 1" loading="lazy">
             </div>
             <div class="carousel-item">
-                <img src="media/images/photo_2.jpg" class="d-block w-100" alt="...">
+                <img src="media/images/photo_2.jpg" class="d-block w-100" alt="Photo 2" loading="lazy">
             </div>
             <div class="carousel-item">
-                <img src="media/images/photo_3.jpg" class="d-block w-100" alt="...">
+                <img src="media/images/photo_3.jpg" class="d-block w-100" alt="Photo 3" loading="lazy">
             </div>
             <div class="carousel-item">
-                <img src="media/images/photo_4.jpg" class="d-block w-100" alt="...">
+                <img src="media/images/photo_4.jpg" class="d-block w-100" alt="Photo 4" loading="lazy">
             </div>
             <div class="carousel-item">
-                <img src="media/images/photo_5.jpg" class="d-block w-100" alt="...">
+                <img src="media/images/photo_5.jpg" class="d-block w-100" alt="Photo 5" loading="lazy">
             </div>
             <div class="carousel-item">
-                <img src="media/images/photo_6.jpg" class="d-block w-100" alt="...">
+                <img src="media/images/photo_6.jpg" class="d-block w-100" alt="Photo 6" loading="lazy">
             </div>
             <div class="carousel-item">
-                <img src="media/images/photo_7.jpg" class="d-block w-100" alt="...">
+                <img src="media/images/photo_7.jpg" class="d-block w-100" alt="Photo 7" loading="lazy">
             </div>
         </div>
+
+        <!-- Controls -->
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
