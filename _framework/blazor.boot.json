@@ -1,9 +1,9 @@
 {
   "mainAssemblyName": "BeyondTheLabel",
   "resources": {
-    "hash": "sha256-HGy4ZRUvR0h2MM18wkktnIE2Wncd0zRPKR03Xmr/6mk=",
+    "hash": "sha256-pRjVGIUnS0QyPcuVXV5oHiFSADzh2w/83eRjhcvQ4uY=",
     "fingerprinting": {
-      "BeyondTheLabel.pz65dnvm3t.wasm": "BeyondTheLabel.wasm",
+      "BeyondTheLabel.2kgyk3bx37.wasm": "BeyondTheLabel.wasm",
       "Microsoft.AspNetCore.Components.02buf7k9xh.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Web.m82a7h72lk.wasm": "Microsoft.AspNetCore.Components.Web.wasm",
       "Microsoft.AspNetCore.Components.WebAssembly.hzlmeul8pm.wasm": "Microsoft.AspNetCore.Components.WebAssembly.wasm",
@@ -61,7 +61,7 @@
       "System.Runtime.InteropServices.JavaScript.zp9u3yqbi4.wasm": "sha256-t5fC5E2r9YJ+puOWw7YuXXMwvd7LxeR0Zt16THexNM0="
     },
     "assembly": {
-      "BeyondTheLabel.pz65dnvm3t.wasm": "sha256-pQt5cMcvZ9x2Xl7FuxXGtY7MNDed9QkQFlH4qqumDGo=",
+      "BeyondTheLabel.2kgyk3bx37.wasm": "sha256-rgesTnF3rv7GH+A3yoAexhrAzX3+2PVd9aVgYbAH5yk=",
       "Microsoft.AspNetCore.Components.02buf7k9xh.wasm": "sha256-iAGtqv6MNjrssMsFjpCvbPsb/z2fijC1ZZ5kOqes4LE=",
       "Microsoft.AspNetCore.Components.Web.m82a7h72lk.wasm": "sha256-Kpul2BwhpmXSLzaq45zugggDkRHsgs9Z2vSGDuUq4EM=",
       "Microsoft.AspNetCore.Components.WebAssembly.hzlmeul8pm.wasm": "sha256-M5E6UyiUtbDRxmlSMi9lCSOXoy9o9FG5d5jfjbGDFrg=",
