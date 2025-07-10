@@ -1,0 +1,353 @@
+﻿@page "/team"
+
+<style>
+
+
+    .icon {
+        font-size: 3rem;
+        color: #6c757d;
+        margin-bottom: 20px;
+    }
+
+    h1, h2 {
+        text-align: center;
+        margin: 0 0 20px;
+    }
+
+    p {
+        text-align: justify;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .profile-picture {
+        width: 350px;
+        height: 350px;
+/*         border-radius: 50%;
+ */        margin: 20px auto;
+        display: block;
+    }
+
+    .social-links {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+        .social-links a {
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: #6c757d;
+            text-decoration: none;
+        }
+
+            .social-links a:hover {
+                color: #007bff;
+            }
+
+    .icon {
+        font-size: 3rem;
+        color: #6c757d; /* Default color */
+        margin-bottom: 20px;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+        .icon i {
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .icon:hover {
+            color: #007bff; /* Change color on hover */
+            transform: scale(1.1); /* Slight zoom effect on hover */
+        }
+
+    .break-container {
+        width: 50%;
+        height: 1px;
+        background-color: #ccc; /* Soft gray for a subtle look */
+        margin: 40px auto; /* Centers it and adds vertical spacing */
+    }
+
+
+</style>
+
+<div style="margin-bottom: 2em;">
+
+@foreach (var info in Sections)
+{
+        if(info.Id == "break")
+        {
+            <div class="container mt-4"></div>
+        }
+        <section id="@info.Id" class="@info.CssClass mb-5">
+        @if (!string.IsNullOrEmpty(info.ImageUrl))
+        {
+            <img src="@info.ImageUrl" alt="@info.ImageAltText" class="@info.ImageCssClass" />
+        }
+
+        @if (!string.IsNullOrEmpty(info.Role))
+        {
+            <h1>@info.Role</h1>
+        }
+
+        @if (!string.IsNullOrEmpty(info.Title))
+        {
+            <h2>@info.Title</h2>
+        }
+
+        @if (!string.IsNullOrEmpty(info.IconClass))
+        {
+            <div class="icon"><i class="@info.IconClass"></i></div>
+        }
+
+        @if (!string.IsNullOrEmpty(info.Paragraph))
+        {
+            <p>@((MarkupString)info.Paragraph)</p>
+        }
+
+        @if (info.SocialLinks != null && info.SocialLinks.Any())
+        {
+            <div class="social-links">
+                @foreach (var link in info.SocialLinks)
+                {
+                    <a href="@link.Url" target="_blank" aria-label="@link.AriaLabel">
+                        <i class="@link.IconClass"></i>
+                    </a>
+                }
+            </div>
+        }
+    </section>
+}
+
+</div>
+
+<script>
+    window.observeSections();
+</script>
+
+
+@code {
+    public class SectionModel
+    {
+        public string? Id { get; set; }
+        public string? CssClass { get; set; }
+        public string? IconClass { get; set; }
+
+        public string? Title { get; set; }
+        public string? ImageUrl { get; set; }
+        public string? ImageAltText { get; set; }
+        public string? ImageCssClass { get; set; }
+
+        public string? Paragraph { get; set; }
+
+        // Only used in the welcome section
+        public string? Name { get; set; }
+        public string? Role { get; set; }
+
+        public List<SocialLink>? SocialLinks { get; set; }
+    }
+
+    public class SocialLink
+    {
+        public string? Url { get; set; }
+        public string? IconClass { get; set; }
+        public string? AriaLabel { get; set; }
+    }
+    List<SectionModel> Sections = new()
+    {
+
+    // DORI COHEN - Welcome
+    new SectionModel
+    {
+        Id = "welcome-dori",
+        CssClass = "container text-center",
+        ImageUrl = "media/images/dori_cohen.jpg",
+        ImageAltText = "Dori Cohen",
+        ImageCssClass = "profile-picture img-fluid",
+        Role = "Speech Language Pathologist Assistant",
+        Name = "Dori Cohen",
+        Paragraph = "Welcome! I'm <strong>Dori Cohen</strong>. I'm passionate about language, human connection, and helping others through speech-language pathology.",
+        SocialLinks = null
+    },
+    new SectionModel
+    {
+        Id = "journey-dori",
+        CssClass = "container",
+        IconClass = "fas fa-route",
+        Title = "My Journey",
+        Paragraph = "I embarked on this speech-language pathology journey a little later in my story than some. I worked in the fields of market research and later software development before eventually finding this field. I was starved for human connection and have always had a keen interest in language and language acquisition. I had a child a few years ago and the process of them acquiring language led me down this path.",
+        Name = "Dori Cohen"
+    },
+    new SectionModel
+    {
+        Id = "academics-dori",
+        CssClass = "container",
+        IconClass = "fas fa-graduation-cap",
+        Title = "Academic Excellence",
+        Paragraph = "I attended University of California Santa Cruz for my first bachelor’s degree in Anthropology. Then upon finding speech-language pathology, I got my second bachelor’s in Speech and Hearing Science from Arizona State University, graduating summa cum laude. I will be attending CSUN’s Communication Disorders Master’s Program starting in the Fall.",
+        Name = "Dori Cohen"
+    },
+    new SectionModel
+    {
+        Id = "focus-dori",
+        CssClass = "container",
+        IconClass = "fas fa-bullseye",
+        Title = "Areas of Focus",
+        Paragraph = "My focus areas are speech and language disorders that result from neurological conditions, both acquired and developmental.",
+        Name = "Dori Cohen"
+    },
+    new SectionModel
+    {
+        Id = "roots-dori",
+        CssClass = "container",
+        IconClass = "fas fa-tree",
+        Title = "Roots",
+        Paragraph = "My roots are first and foremost here in Los Angeles. I come from parents who were both looking to settle down “out West” and so they did! I feel fortunate to have lived in and to hail from one of the most beautiful places in the world, though I do have a soft spot for New York City where I spent many years.",
+        Name = "Dori Cohen"
+    },
+    new SectionModel
+    {
+        Id = "vision-dori",
+        CssClass = "container",
+        IconClass = "fas fa-eye",
+        Title = "Vision",
+        Paragraph = "In my world, those with the privilege to do so are creating a more just and equitable world for all. Language connects us all; I hope that by spending my life treating speech and language disorders that I am doing my part in creating a more equitable world. I hope one day for equal access to all health services, whether that mean time or freeing up time via childcare or free transportation.",
+        Name = "Dori Cohen"
+    },
+    new SectionModel
+    {
+        Id = "contributions-dori",
+        CssClass = "container",
+        IconClass = "fas fa-hands-helping",
+        Title = "Contributions to the Field",
+        Paragraph = "I hope to be able to contribute to the field by helping with research in my master’s program. Having worked in market research, I feel that research is where I am best suited to give back to this field. During my bachelor’s I assisted professors in any research opportunities I could.",
+        Name = "Dori Cohen"
+    },
+    new SectionModel
+    {
+        Id="break",
+        CssClass="break-container"
+    },
+    // ASHLEY SOLANO - Welcome
+    new SectionModel
+    {
+        Id = "welcome-ashley",
+        CssClass = "container text-center",
+        ImageUrl = "media/images/ashley_solano.jpg",
+        ImageAltText = "Ashley Solano",
+        ImageCssClass = "profile-picture img-fluid",
+        Role = "Speech Language Pathologist Assistant",
+        Name = "Ashley Solano",
+        Paragraph = "Hi, I'm <strong>Ashley Solano</strong>. I'm passionate about early intervention and AAC for pediatric speech and language support.",
+        SocialLinks = null
+    },
+    new SectionModel
+    {
+        Id = "journey-ashley",
+        CssClass = "container",
+        IconClass = "fas fa-route",
+        Title = "My Journey",
+        Paragraph = "I was first introduced to the field of speech-language pathology during a career course in community college. This led me to shadow a pediatric speech-language pathologist, which sparked my interest in the profession. Since then, I have gained experience working in a clinic with both pediatric and adult populations, as well as in school settings with preschool and elementary students. I also have experience supporting students who use Augmentative and Alternative Communication (AAC).",
+        Name = "Ashley Solano"
+    },
+    new SectionModel
+    {
+        Id = "academics-ashley",
+        CssClass = "container",
+        IconClass = "fas fa-graduation-cap",
+        Title = "Academic Excellence",
+        Paragraph = "I hold an Associate’s degree in General Science from Santa Monica College and a Bachelor’s degree in Communicative Sciences and Disorders from California State University, Fullerton, where I also earned my license to practice as a Speech-Language Pathologist Assistant (SLPA). I am currently pursuing my Master’s degree in Speech-Language Pathology at West Coast University.",
+        Name = "Ashley Solano"
+    },
+    new SectionModel
+    {
+        Id = "focus-ashley",
+        CssClass = "container",
+        IconClass = "fas fa-bullseye",
+        Title = "Areas of Focus and Vision",
+        Paragraph = "I am passionate about working with the pediatric population, particularly in early intervention and school settings. I plan to continue expanding my knowledge and expertise in Augmentative and Alternative Communication (AAC) to better support my future clients.",
+        Name = "Ashley Solano"
+    }
+        // new SectionModel
+        // {
+        //     Id = "welcome",
+        //     CssClass = "container text-center",
+        //     ImageUrl = "media/images/jada_augustine.jpg",
+        //     ImageAltText = "Jada Augustine",
+        //     ImageCssClass = "profile-picture img-fluid",
+        //     Role = "Founder and CEO",
+        //     Name = "Jada Augustine",
+        //     Paragraph = "My name is <strong>Jada Augustine</strong>, and I am passionate about making an impact, preserving culture, and fostering growth within communities.",
+        //     SocialLinks = new List<SocialLink>
+        //     {
+        //         new SocialLink
+        //         {
+        //             Url = "https://www.linkedin.com/in/jada-augustine-46b1452b0/",
+        //             IconClass = "fab fa-linkedin",
+        //             AriaLabel = "LinkedIn Profile"
+        //         },
+        //         new SocialLink
+        //         {
+        //             Url = "https://www.instagram.com/beyondthelabelpc/?hl=en",
+        //             IconClass = "fab fa-instagram",
+        //             AriaLabel = "Instagram Profile"
+        //         }
+        //     }
+        // },
+        // new SectionModel
+        // {
+        //     Id = "journey",
+        //     CssClass = "container",
+        //     IconClass = "fas fa-route",
+        //     Title = "My Journey",
+        //     Paragraph = "I have been fortunate to achieve incredible milestones..."
+        // },
+        // new SectionModel
+        // {
+        //     Id = "academics",
+        //     CssClass = "container",
+        //     IconClass = "fas fa-graduation-cap",
+        //     Title = "Academic Excellence",
+        //     Paragraph = "I hold a Bachelor’s degree in Speech-Language Pathology..."
+        // },
+        // new SectionModel
+        // {
+        //     Id = "research",
+        //     CssClass = "container",
+        //     IconClass = "fas fa-flask",
+        //     Title = "Research Focus",
+        //     Paragraph = "My research centers on autistic preschoolers..."
+        // },
+        // new SectionModel
+        // {
+        //     Id = "roots",
+        //     CssClass = "container",
+        //     IconClass = "fas fa-tree",
+        //     Title = "My Roots",
+        //     Paragraph = "I take immense pride in my <strong>Garifuna heritage</strong>..."
+        // },
+        // new SectionModel
+        // {
+        //     Id = "giving",
+        //     CssClass = "container",
+        //     IconClass = "fas fa-hands-helping",
+        //     Title = "Giving Back",
+        //     Paragraph = "Nine years ago, I founded a non-profit organization..."
+        // },
+        // new SectionModel
+        // {
+        //     Id = "vision",
+        //     CssClass = "container",
+        //     IconClass = "fas fa-eye",
+        //     Title = "My Vision",
+        //     Paragraph = "I believe in the power of education, culture, and community..."
+        // }
+    };
+}
