@@ -4,33 +4,63 @@
 
 <style>
     .testimonials-section {
-        background-color: #ffffff;
-        border: 1px solid #e9ecef;
-        border-radius: 12px;
-        padding: 24px;
-        margin-bottom: 24px;
+        background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+        border: 1px solid #e6eef8;
+        border-radius: 18px;
+        padding: 28px;
+        margin-bottom: 28px;
         opacity: 1;
         transform: none;
     }
 
+    .testimonials-header {
+        margin-bottom: 18px;
+    }
+
+    .testimonials-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #2359b6;
+        background: #eaf2ff;
+        border-radius: 999px;
+        padding: 6px 12px;
+        margin-bottom: 10px;
+    }
+
     .testimonials-section h2 {
-        margin-bottom: 16px;
+        margin-bottom: 8px;
+        font-size: clamp(1.5rem, 2.5vw, 2rem);
+        font-weight: 700;
+        color: #102a43;
+    }
+
+    .testimonials-subtitle {
+        margin: 0;
+        color: #486581;
+        font-size: 1rem;
     }
 
     .testimonial-card {
-        background-color: #f8f9fa;
-        border-left: 4px solid #74a8f4;
-        border-radius: 8px;
-        padding: 14px;
+        background-color: #ffffff;
+        border: 1px solid #dbe7f5;
+        border-radius: 14px;
+        padding: 16px;
         margin-bottom: 0;
         height: 100%;
+        box-shadow: 0 4px 14px rgba(16, 42, 67, 0.06);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .testimonials-scroll {
         display: flex;
-        gap: 12px;
+        gap: 14px;
         overflow-x: auto;
-        padding-bottom: 8px;
+        padding: 2px 4px 10px;
         scroll-snap-type: x mandatory;
     }
 
@@ -47,29 +77,50 @@
     }
 
     .testimonial-link:hover .testimonial-card {
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(16, 42, 67, 0.14);
     }
 
     .testimonial-card p {
         margin-bottom: 0;
+        color: #334e68;
+        line-height: 1.55;
     }
 
     .testimonial-author {
-        margin-top: 8px;
-        font-weight: 600;
-        color: #495057;
+        margin-top: 12px;
+        font-weight: 700;
+        color: #102a43;
     }
 
     .testimonial-meta {
         display: block;
-        margin-top: 2px;
-        color: #6c757d;
-        font-size: 0.9rem;
+        margin-top: 6px;
+        color: #486581;
+        font-size: 0.85rem;
+    }
+
+    .testimonials-section .btn {
+        margin-top: 14px !important;
+        border-radius: 999px;
+        padding: 9px 18px;
+        font-weight: 600;
+    }
+
+    @@media (max-width: 576px) {
+        .testimonials-section {
+            padding: 20px;
+            border-radius: 14px;
+        }
     }
 </style>
 
-<section class="testimonials-section text-center">
-    <h2>@(IsHomeSection ? "What Families Are Saying" : "Testimonials")</h2>
+<section class="testimonials-section">
+    <div class="testimonials-header text-center">
+        <span class="testimonials-kicker">Google Reviews · 5.0</span>
+        <h2>@(IsHomeSection ? "What Families Are Saying" : "Testimonials")</h2>
+        <p class="testimonials-subtitle">Real experiences from families we support.</p>
+    </div>
 
     <div class="testimonials-scroll">
         @foreach (var review in reviews)
