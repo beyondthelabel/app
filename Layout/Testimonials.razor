@@ -1,8 +1,6 @@
 @using Microsoft.AspNetCore.Components
-@using Microsoft.JSInterop
 @using System.Text.Json.Serialization
-@implements IAsyncDisposable
-@inject IJSRuntime JS
+@inject HttpClient Http
 
 <style>
     .testimonials-section {
@@ -82,26 +80,17 @@
 @code {
     [Parameter] public bool IsHomeSection { get; set; }
 
-    private IJSObjectReference? module;
     private List<GoogleReview> reviews = new();
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnInitializedAsync()
     {
-        if (!firstRender)
+        try
         {
-            return;
+            reviews = await Http.GetFromJsonAsync<List<GoogleReview>>("reviews/google-reviews.json") ?? new List<GoogleReview>();
         }
-
-        module = await JS.InvokeAsync<IJSObjectReference>("import", "./js/google-reviews.js");
-        reviews = await module.InvokeAsync<List<GoogleReview>>("getBeyondTheLabelGoogleReviews") ?? new List<GoogleReview>();
-        StateHasChanged();
-    }
-
-    public async ValueTask DisposeAsync()
-    {
-        if (module is not null)
+        catch
         {
-            await module.DisposeAsync();
+            reviews = new List<GoogleReview>();
         }
     }
 
