@@ -22,7 +22,32 @@
         border-left: 4px solid #74a8f4;
         border-radius: 8px;
         padding: 14px;
-        margin-bottom: 12px;
+        margin-bottom: 0;
+        height: 100%;
+    }
+
+    .testimonials-scroll {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        scroll-snap-type: x mandatory;
+    }
+
+    .testimonial-item {
+        flex: 0 0 min(360px, 90vw);
+        scroll-snap-align: start;
+    }
+
+    .testimonial-link {
+        color: inherit;
+        text-decoration: none;
+        display: block;
+        height: 100%;
+    }
+
+    .testimonial-link:hover .testimonial-card {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
     }
 
     .testimonial-card p {
@@ -46,26 +71,32 @@
 <section class="testimonials-section text-center">
     <h2>@(IsHomeSection ? "What Families Are Saying" : "Testimonials")</h2>
 
-    <div class="row g-3">
+    <div class="testimonials-scroll">
         @foreach (var review in reviews)
         {
-            <div class="col-12 @(IsHomeSection ? "col-md-6 col-lg-4" : "col-md-6")">
-                <div class="testimonial-card h-100">
-                    @if (!string.IsNullOrWhiteSpace(review.Text))
-                    {
-                        <p>"@review.Text"</p>
-                    }
-                    else
-                    {
-                        <p>Review available on Google.</p>
-                    }
+            <div class="testimonial-item">
+                <a class="testimonial-link"
+                   href="@ReviewsUrl"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="@($"Read Google review by {review.Author}")">
+                    <div class="testimonial-card">
+                        @if (!string.IsNullOrWhiteSpace(review.Text))
+                        {
+                            <p>"@review.Text"</p>
+                        }
+                        else
+                        {
+                            <p>Review available on Google.</p>
+                        }
 
-                    <p class="testimonial-author">— @review.Author</p>
+                        <p class="testimonial-author">— @review.Author</p>
+                    </div>
+                </a>
                     @if (!string.IsNullOrWhiteSpace(review.ProfileUrl))
                     {
-                        <a class="testimonial-meta" href="@review.ProfileUrl" target="_blank" rel="noopener noreferrer">View profile</a>
+                        <span class="testimonial-meta">View profile available on Google</span>
                     }
-                </div>
             </div>
         }
     </div>
@@ -73,13 +104,14 @@
     <a class="btn btn-outline-primary mt-3"
        target="_blank"
        rel="noopener noreferrer"
-       href="https://www.google.com/maps/place/BeyondTheLabel/%4034.0206049,-118.4241617,17z/data=!4m16!1m9!3m8!1s0x80c2bb5547079631:0x8a5f8cd477a0b238!2sBeyondTheLabel!8m2!3d34.0206049!4d-118.4241617!9m1!1b1!16s%2Fg%2F11wxqd81fl!3m5!1s0x80c2bb5547079631:0x8a5f8cd477a0b238!8m2!3d34.0206049!4d-118.4241617!16s%2Fg%2F11wxqd81fl?entry=ttu&amp;g_ep=EgoyMDI2MDcxNC4wIKXMDSoASAFQAw%3D%3D">
+       href="@ReviewsUrl">
         Read More Google Reviews
     </a>
 </section>
 
 @code {
     [Parameter] public bool IsHomeSection { get; set; }
+    private const string ReviewsUrl = "https://www.google.com/search?q=beyondthelabel+los+angeles&rlz=1C1VDKB_enUS1087US1087&oq=beyondthelabel+los+angeles&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIKCAEQABgKGBYYHjINCAIQABiGAxiABBiKBTIKCAMQABiABBiiBDIHCAQQABjvBTIHCAUQABjvBTIKCAYQABiiBBiJBdIBCDQzNzRqMGo0qAIDsAIB8QXIUuTuBB8-SvEFyFLk7gQfPko&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x80c2bb5547079631:0x8a5f8cd477a0b238,1,,,,";
 
     private List<GoogleReview> reviews = new();
 
