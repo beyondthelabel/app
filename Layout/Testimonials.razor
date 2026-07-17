@@ -1,4 +1,8 @@
 @using Microsoft.AspNetCore.Components
+@using Microsoft.JSInterop
+@using System.Text.Json.Serialization
+@implements IAsyncDisposable
+@inject IJSRuntime JS
 
 <style>
     .testimonials-section {
@@ -30,30 +34,41 @@
         font-weight: 600;
         color: #495057;
     }
+
+    .testimonial-meta {
+        display: block;
+        margin-top: 2px;
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
 </style>
 
 <section class="testimonials-section text-center">
     <h2>@(IsHomeSection ? "What Families Are Saying" : "Testimonials")</h2>
 
     <div class="row g-3">
-        <div class="col-12 @(IsHomeSection ? "col-md-4" : "col-md-12")">
-            <div class="testimonial-card h-100">
-                <p>"Jada's approach made my child feel seen, supported, and confident in communication."</p>
-                <p class="testimonial-author">— Parent Review</p>
+        @foreach (var review in reviews)
+        {
+            <div class="col-12 @(IsHomeSection ? "col-md-6 col-lg-4" : "col-md-6")">
+                <div class="testimonial-card h-100">
+                    @if (!string.IsNullOrWhiteSpace(review.Text))
+                    {
+                        <p>"@review.Text"</p>
+                    }
+                    else
+                    {
+                        <p>Review available on Google.</p>
+                    }
+
+                    <p class="testimonial-author">— @review.Author</p>
+                    <span class="testimonial-meta">@review.RelativeDate</span>
+                    @if (!string.IsNullOrWhiteSpace(review.ProfileUrl))
+                    {
+                        <a class="testimonial-meta" href="@review.ProfileUrl" target="_blank" rel="noopener noreferrer">View profile</a>
+                    }
+                </div>
             </div>
-        </div>
-        <div class="col-12 @(IsHomeSection ? "col-md-4" : "col-md-12")">
-            <div class="testimonial-card h-100">
-                <p>"Professional, caring, and incredibly knowledgeable about advocacy and the IEP process."</p>
-                <p class="testimonial-author">— Family Review</p>
-            </div>
-        </div>
-        <div class="col-12 @(IsHomeSection ? "col-md-4" : "col-md-12")">
-            <div class="testimonial-card h-100">
-                <p>"Every session felt personalized and practical. We saw progress quickly."</p>
-                <p class="testimonial-author">— Client Review</p>
-            </div>
-        </div>
+        }
     </div>
 
     <a class="btn btn-outline-primary mt-3"
@@ -66,4 +81,42 @@
 
 @code {
     [Parameter] public bool IsHomeSection { get; set; }
+
+    private IJSObjectReference? module;
+    private List<GoogleReview> reviews = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender)
+        {
+            return;
+        }
+
+        module = await JS.InvokeAsync<IJSObjectReference>("import", "./js/google-reviews.js");
+        reviews = await module.InvokeAsync<List<GoogleReview>>("getBeyondTheLabelGoogleReviews") ?? new List<GoogleReview>();
+        StateHasChanged();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (module is not null)
+        {
+            await module.DisposeAsync();
+        }
+    }
+
+    private class GoogleReview
+    {
+        [JsonPropertyName("author")]
+        public string Author { get; set; } = string.Empty;
+
+        [JsonPropertyName("relativeDate")]
+        public string RelativeDate { get; set; } = string.Empty;
+
+        [JsonPropertyName("text")]
+        public string Text { get; set; } = string.Empty;
+
+        [JsonPropertyName("profileUrl")]
+        public string? ProfileUrl { get; set; }
+    }
 }
