@@ -4,10 +4,10 @@
 
 <style>
     .testimonials-section {
-        background: #f7f5f2;
-        border: 1px solid #e7dbc9;
+        background: #f5f4f2;
+        border: 1px solid #e6d8c1;
         border-radius: 22px;
-        padding: 24px;
+        padding: 26px 24px 20px;
         margin-bottom: 24px;
         opacity: 1;
         transform: none;
@@ -34,15 +34,16 @@
 
     .testimonials-section h2 {
         margin-bottom: 6px;
-        font-size: clamp(2rem, 3.3vw, 2.75rem);
+        font-size: clamp(2.2rem, 4vw, 3rem);
         font-weight: 700;
         color: #1e2a38;
+        letter-spacing: -0.02em;
     }
 
     .testimonials-subtitle {
         margin: 0;
         color: #4f5f73;
-        font-size: 1.05rem;
+        font-size: 1.1rem;
     }
 
     .testimonials-chips {
@@ -53,10 +54,10 @@
     }
 
     .rating-chip {
-        background: #f5f4f2;
-        border: 1px solid #e7dbc9;
+        background: #f4f3f1;
+        border: 1px solid #e6d8c1;
         border-radius: 16px;
-        padding: 12px;
+        padding: 13px 12px;
         text-align: center;
     }
 
@@ -81,7 +82,7 @@
         justify-content: space-between;
         align-items: center;
         gap: 10px;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
     }
 
     .testimonials-count {
@@ -121,13 +122,13 @@
     }
 
     .testimonial-card {
-        background-color: #ffffff;
-        border: 1px solid #e7dbc9;
+        background-color: #f6f5f3;
+        border: 1px solid #e6d8c1;
         border-radius: 16px;
         padding: 16px 18px;
         margin-bottom: 0;
         height: 100%;
-        box-shadow: 0 3px 10px rgba(30, 42, 56, 0.04);
+        box-shadow: none;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
@@ -144,17 +145,17 @@
     }
 
     .testimonials-scroll::-webkit-scrollbar-thumb {
-        background-color: #8b8f96;
+        background-color: #81848a;
         border-radius: 999px;
     }
 
     .testimonials-scroll::-webkit-scrollbar-track {
-        background: #e2e3e5;
+        background: #dddfe2;
         border-radius: 999px;
     }
 
     .testimonial-item {
-        flex: 0 0 min(320px, 90vw);
+        flex: 0 0 min(330px, 90vw);
         scroll-snap-align: start;
     }
 
@@ -180,7 +181,7 @@
 
     .testimonial-author {
         margin: 0;
-        font-size: 1.8rem;
+        font-size: 2.05rem;
         font-weight: 700;
         line-height: 1.1;
         color: #1e2a38;
@@ -214,13 +215,6 @@
         font-size: 1.01rem;
     }
 
-    .testimonial-meta {
-        display: block;
-        margin-top: 6px;
-        color: #4f5f73;
-        font-size: 0.85rem;
-    }
-
     @@media (max-width: 576px) {
         .testimonials-section {
             padding: 20px;
@@ -246,7 +240,7 @@
         }
 
         .testimonial-author {
-            font-size: 1.55rem;
+            font-size: 1.7rem;
         }
 
         .testimonials-section h2 {
@@ -317,10 +311,6 @@
                         }
                     </div>
                 </a>
-                    @if (!string.IsNullOrWhiteSpace(review.ProfileUrl))
-                    {
-                        <span class="testimonial-meta">View profile available on Google</span>
-                    }
             </div>
         }
     </div>
