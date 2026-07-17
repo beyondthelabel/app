@@ -4,55 +4,130 @@
 
 <style>
     .testimonials-section {
-        background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
-        border: 1px solid #e6eef8;
-        border-radius: 18px;
-        padding: 28px;
-        margin-bottom: 28px;
+        background: #f7f5f2;
+        border: 1px solid #e7dbc9;
+        border-radius: 22px;
+        padding: 24px;
+        margin-bottom: 24px;
         opacity: 1;
         transform: none;
     }
 
-    .testimonials-header {
+    .testimonials-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
         margin-bottom: 18px;
     }
 
     .testimonials-kicker {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        font-size: 0.85rem;
+        font-size: 0.95rem;
         font-weight: 700;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        color: #2359b6;
-        background: #eaf2ff;
+        color: #a16400;
+        background: #f0e3cc;
         border-radius: 999px;
-        padding: 6px 12px;
+        padding: 6px 14px;
         margin-bottom: 10px;
     }
 
     .testimonials-section h2 {
-        margin-bottom: 8px;
-        font-size: clamp(1.5rem, 2.5vw, 2rem);
+        margin-bottom: 6px;
+        font-size: clamp(2rem, 3.3vw, 2.75rem);
         font-weight: 700;
-        color: #102a43;
+        color: #1e2a38;
     }
 
     .testimonials-subtitle {
         margin: 0;
-        color: #486581;
-        font-size: 1rem;
+        color: #4f5f73;
+        font-size: 1.05rem;
+    }
+
+    .testimonials-chips {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(160px, 1fr));
+        gap: 12px;
+        min-width: 360px;
+    }
+
+    .rating-chip {
+        background: #f5f4f2;
+        border: 1px solid #e7dbc9;
+        border-radius: 16px;
+        padding: 12px;
+        text-align: center;
+    }
+
+    .rating-chip-stars {
+        display: block;
+        color: #f2ab00;
+        letter-spacing: 2px;
+        font-size: 1.05rem;
+        line-height: 1;
+    }
+
+    .rating-chip-label {
+        display: block;
+        margin-top: 7px;
+        color: #1e2a38;
+        font-size: 1.05rem;
+        font-weight: 700;
+    }
+
+    .testimonials-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+
+    .testimonials-count {
+        margin: 0;
+        color: #4f5f73;
+        font-size: 0.98rem;
+    }
+
+    .testimonials-actions {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .testimonial-nav {
+        width: 32px;
+        height: 32px;
+        border: 1px solid #a3adbc;
+        border-radius: 4px;
+        color: #4f5f73;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        line-height: 1;
+    }
+
+    .testimonials-show-all {
+        border: 1px solid #1e2a38;
+        color: #1e2a38;
+        background: #ffffff;
+        text-decoration: none;
+        border-radius: 4px;
+        padding: 6px 12px;
+        font-weight: 600;
     }
 
     .testimonial-card {
         background-color: #ffffff;
-        border: 1px solid #dbe7f5;
-        border-radius: 14px;
-        padding: 16px;
+        border: 1px solid #e7dbc9;
+        border-radius: 16px;
+        padding: 16px 18px;
         margin-bottom: 0;
         height: 100%;
-        box-shadow: 0 4px 14px rgba(16, 42, 67, 0.06);
+        box-shadow: 0 3px 10px rgba(30, 42, 56, 0.04);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
@@ -60,12 +135,26 @@
         display: flex;
         gap: 14px;
         overflow-x: auto;
-        padding: 2px 4px 10px;
+        padding: 2px 0 10px;
         scroll-snap-type: x mandatory;
     }
 
+    .testimonials-scroll::-webkit-scrollbar {
+        height: 9px;
+    }
+
+    .testimonials-scroll::-webkit-scrollbar-thumb {
+        background-color: #8b8f96;
+        border-radius: 999px;
+    }
+
+    .testimonials-scroll::-webkit-scrollbar-track {
+        background: #e2e3e5;
+        border-radius: 999px;
+    }
+
     .testimonial-item {
-        flex: 0 0 min(360px, 90vw);
+        flex: 0 0 min(320px, 90vw);
         scroll-snap-align: start;
     }
 
@@ -78,33 +167,58 @@
 
     .testimonial-link:hover .testimonial-card {
         transform: translateY(-2px);
-        box-shadow: 0 10px 24px rgba(16, 42, 67, 0.14);
+        box-shadow: 0 10px 18px rgba(30, 42, 56, 0.1);
+    }
+
+    .testimonial-card-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+
+    .testimonial-author {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 1.1;
+        color: #1e2a38;
+    }
+
+    .testimonial-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid #9fd8b2;
+        background: #eaf9ef;
+        color: #0f6f34;
+        font-size: 0.92rem;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    .testimonial-stars {
+        margin: 0 0 8px;
+        color: #f2ab00;
+        letter-spacing: 3px;
+        font-size: 1.1rem;
     }
 
     .testimonial-card p {
         margin-bottom: 0;
-        color: #334e68;
-        line-height: 1.55;
-    }
-
-    .testimonial-author {
-        margin-top: 12px;
-        font-weight: 700;
-        color: #102a43;
+        color: #1e2a38;
+        line-height: 1.58;
+        font-size: 1.01rem;
     }
 
     .testimonial-meta {
         display: block;
         margin-top: 6px;
-        color: #486581;
+        color: #4f5f73;
         font-size: 0.85rem;
-    }
-
-    .testimonials-section .btn {
-        margin-top: 14px !important;
-        border-radius: 999px;
-        padding: 9px 18px;
-        font-weight: 600;
     }
 
     @@media (max-width: 576px) {
@@ -113,17 +227,73 @@
             border-radius: 14px;
         }
     }
+
+    @@media (max-width: 991px) {
+        .testimonials-top {
+            flex-direction: column;
+        }
+
+        .testimonials-chips {
+            min-width: 0;
+            width: 100%;
+        }
+    }
+
+    @@media (max-width: 767px) {
+        .testimonials-toolbar {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .testimonial-author {
+            font-size: 1.55rem;
+        }
+
+        .testimonials-section h2 {
+            font-size: 2rem;
+        }
+    }
 </style>
 
 <section class="testimonials-section">
-    <div class="testimonials-header text-center">
-        <span class="testimonials-kicker">Google Reviews · 5.0</span>
-        <h2>@(IsHomeSection ? "What Families Are Saying" : "Testimonials")</h2>
-        <p class="testimonials-subtitle">Real experiences from families we support.</p>
+    <div class="testimonials-top">
+        <div class="testimonials-header">
+            <span class="testimonials-kicker">Customer Reviews</span>
+            <h2>What Our Customers Say</h2>
+            <p class="testimonials-subtitle">Honest feedback from customers who purchased from <strong>BeyondTheLabel</strong>.</p>
+        </div>
+        <div class="testimonials-chips">
+            <div class="rating-chip">
+                <span class="rating-chip-stars">★★★★★</span>
+                <span class="rating-chip-label">Testimonials</span>
+            </div>
+            <div class="rating-chip">
+                <span class="rating-chip-stars">★★★★★</span>
+                <span class="rating-chip-label">Trustpilot</span>
+            </div>
+            <div class="rating-chip">
+                <span class="rating-chip-stars">★★★★★</span>
+                <span class="rating-chip-label">Google Reviews</span>
+            </div>
+        </div>
     </div>
 
-    <div class="testimonials-scroll">
-        @foreach (var review in reviews)
+    <div class="testimonials-toolbar">
+        <p class="testimonials-count">Showing @DisplayedReviewCount most recent reviews</p>
+        <div class="testimonials-actions">
+            <a class="testimonial-nav" href="#reviews-rail" aria-label="Previous reviews">‹</a>
+            <a class="testimonial-nav" href="#reviews-rail" aria-label="Next reviews">›</a>
+            <a class="testimonials-show-all"
+               target="_blank"
+               rel="noopener noreferrer"
+               href="@ReviewsUrl">
+                Show all
+            </a>
+        </div>
+    </div>
+
+    <div class="testimonials-scroll" id="reviews-rail">
+        @foreach (var review in DisplayedReviews)
         {
             <div class="testimonial-item">
                 <a class="testimonial-link"
@@ -132,6 +302,11 @@
                    rel="noopener noreferrer"
                    aria-label="@($"Read Google review by {review.Author}")">
                     <div class="testimonial-card">
+                        <div class="testimonial-card-head">
+                            <p class="testimonial-author">@review.Author</p>
+                            <span class="testimonial-badge">✔ Verified Review</span>
+                        </div>
+                        <p class="testimonial-stars">★★★★★</p>
                         @if (!string.IsNullOrWhiteSpace(review.Text))
                         {
                             <p>"@review.Text"</p>
@@ -140,8 +315,6 @@
                         {
                             <p>Review available on Google.</p>
                         }
-
-                        <p class="testimonial-author">— @review.Author</p>
                     </div>
                 </a>
                     @if (!string.IsNullOrWhiteSpace(review.ProfileUrl))
@@ -152,12 +325,6 @@
         }
     </div>
 
-    <a class="btn btn-outline-primary mt-3"
-       target="_blank"
-       rel="noopener noreferrer"
-       href="@ReviewsUrl">
-        Read More Google Reviews
-    </a>
 </section>
 
 @code {
@@ -165,6 +332,8 @@
     private const string ReviewsUrl = "https://www.google.com/search?q=beyondthelabel+los+angeles&rlz=1C1VDKB_enUS1087US1087&oq=beyondthelabel+los+angeles&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIKCAEQABgKGBYYHjINCAIQABiGAxiABBiKBTIKCAMQABiABBiiBDIHCAQQABjvBTIHCAUQABjvBTIKCAYQABiiBBiJBdIBCDQzNzRqMGo0qAIDsAIB8QXIUuTuBB8-SvEFyFLk7gQfPko&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x80c2bb5547079631:0x8a5f8cd477a0b238,1,,,,";
 
     private List<GoogleReview> reviews = new();
+    private IEnumerable<GoogleReview> DisplayedReviews => reviews.Take(20);
+    private int DisplayedReviewCount => Math.Min(reviews.Count, 20);
 
     protected override async Task OnInitializedAsync()
     {
