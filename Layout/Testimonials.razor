@@ -1,0 +1,69 @@
+@using Microsoft.AspNetCore.Components
+
+<style>
+    .testimonials-section {
+        background-color: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+    }
+
+    .testimonials-section h2 {
+        margin-bottom: 16px;
+    }
+
+    .testimonial-card {
+        background-color: #f8f9fa;
+        border-left: 4px solid #74a8f4;
+        border-radius: 8px;
+        padding: 14px;
+        margin-bottom: 12px;
+    }
+
+    .testimonial-card p {
+        margin-bottom: 0;
+    }
+
+    .testimonial-author {
+        margin-top: 8px;
+        font-weight: 600;
+        color: #495057;
+    }
+</style>
+
+<section class="testimonials-section text-center">
+    <h2>@(IsHomeSection ? "What Families Are Saying" : "Testimonials")</h2>
+
+    <div class="row g-3">
+        <div class="col-12 @(IsHomeSection ? "col-md-4" : "col-md-12")">
+            <div class="testimonial-card h-100">
+                <p>"Jada's approach made my child feel seen, supported, and confident in communication."</p>
+                <p class="testimonial-author">— Parent Review</p>
+            </div>
+        </div>
+        <div class="col-12 @(IsHomeSection ? "col-md-4" : "col-md-12")">
+            <div class="testimonial-card h-100">
+                <p>"Professional, caring, and incredibly knowledgeable about advocacy and the IEP process."</p>
+                <p class="testimonial-author">— Family Review</p>
+            </div>
+        </div>
+        <div class="col-12 @(IsHomeSection ? "col-md-4" : "col-md-12")">
+            <div class="testimonial-card h-100">
+                <p>"Every session felt personalized and practical. We saw progress quickly."</p>
+                <p class="testimonial-author">— Client Review</p>
+            </div>
+        </div>
+    </div>
+
+    <a class="btn btn-outline-primary mt-3"
+       target="_blank"
+       rel="noopener noreferrer"
+       href="https://www.google.com/maps/place/BeyondTheLabel/%4034.0206049,-118.4241617,17z/data=!4m16!1m9!3m8!1s0x80c2bb5547079631:0x8a5f8cd477a0b238!2sBeyondTheLabel!8m2!3d34.0206049!4d-118.4241617!9m1!1b1!16s%2Fg%2F11wxqd81fl!3m5!1s0x80c2bb5547079631:0x8a5f8cd477a0b238!8m2!3d34.0206049!4d-118.4241617!16s%2Fg%2F11wxqd81fl?entry=ttu&amp;g_ep=EgoyMDI2MDcxNC4wIKXMDSoASAFQAw%3D%3D">
+        Read More Google Reviews
+    </a>
+</section>
+
+@code {
+    [Parameter] public bool IsHomeSection { get; set; }
+}
