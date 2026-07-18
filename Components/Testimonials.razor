@@ -1,0 +1,403 @@
+@using Microsoft.AspNetCore.Components
+@using System.Text.Json.Serialization
+@using Microsoft.JSInterop
+@implements IDisposable
+@inject HttpClient Http
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+
+<style>
+    .testimonials-section {
+        background: #f4f9ff;
+        border: 1px solid #cfe0f3;
+        border-radius: 22px;
+        padding: 26px 24px 20px;
+        margin-bottom: 24px;
+        opacity: 1;
+        transform: none;
+    }
+
+    .testimonials-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 18px;
+    }
+
+    .testimonials-kicker {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #1f4e8c;
+        background: #dce9f8;
+        border-radius: 999px;
+        padding: 6px 14px;
+        margin-bottom: 10px;
+    }
+
+    .testimonials-section h2 {
+        margin-bottom: 6px;
+        font-size: clamp(2.2rem, 4vw, 3rem);
+        font-weight: 700;
+        color: #1e2a38;
+        letter-spacing: -0.02em;
+    }
+
+    .testimonials-subtitle {
+        margin: 0;
+        color: #4f5f73;
+        font-size: 1.1rem;
+    }
+
+    .testimonials-chips {
+        display: flex;
+        min-width: 220px;
+    }
+
+    .rating-chip {
+        background: #f7fbff;
+        border: 1px solid #cfe0f3;
+        border-radius: 16px;
+        padding: 13px 12px;
+        text-align: center;
+        min-width: 220px;
+    }
+
+    .rating-chip-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
+    .rating-chip-link:hover .rating-chip {
+        box-shadow: 0 8px 14px rgba(31, 78, 140, 0.12);
+        transform: translateY(-1px);
+    }
+
+    .rating-chip-stars {
+        display: block;
+        color: #f2ab00;
+        letter-spacing: 2px;
+        font-size: 1.05rem;
+        line-height: 1;
+    }
+
+    .rating-chip-label {
+        display: block;
+        margin-top: 7px;
+        color: #1e2a38;
+        font-size: 1.05rem;
+        font-weight: 700;
+    }
+
+    .testimonials-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .testimonials-count {
+        margin: 0;
+        color: #4f5f73;
+        font-size: 0.98rem;
+    }
+
+    .testimonials-actions {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .testimonial-nav {
+        width: 32px;
+        height: 32px;
+        border: 1px solid #a7c2e2;
+        border-radius: 4px;
+        background: #ffffff;
+        color: #1f4e8c;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    .testimonials-show-all {
+        border: 1px solid #1f4e8c;
+        color: #1f4e8c;
+        background: #ffffff;
+        text-decoration: none;
+        border-radius: 4px;
+        padding: 6px 12px;
+        font-weight: 600;
+    }
+
+    .testimonial-card {
+        background-color: #ffffff;
+        border: 1px solid #cfe0f3;
+        border-radius: 16px;
+        padding: 16px 18px;
+        margin-bottom: 0;
+        height: 100%;
+        box-shadow: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .testimonials-scroll {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        padding: 2px 0 10px;
+        scroll-snap-type: x mandatory;
+    }
+
+    .testimonials-scroll::-webkit-scrollbar {
+        height: 9px;
+    }
+
+    .testimonials-scroll::-webkit-scrollbar-thumb {
+        background-color: #7aa7d8;
+        border-radius: 999px;
+    }
+
+    .testimonials-scroll::-webkit-scrollbar-track {
+        background: #dce9f8;
+        border-radius: 999px;
+    }
+
+    .testimonial-item {
+        flex: 0 0 min(330px, 90vw);
+        scroll-snap-align: start;
+    }
+
+    .testimonial-link {
+        color: inherit;
+        text-decoration: none;
+        display: block;
+        height: 100%;
+    }
+
+    .testimonial-link:hover .testimonial-card {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 18px rgba(30, 42, 56, 0.1);
+    }
+
+    .testimonial-card-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+
+    .testimonial-author {
+        margin: 0;
+        font-size: 2.05rem;
+        font-weight: 700;
+        line-height: 1.1;
+        color: #1e2a38;
+    }
+
+    .testimonial-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid #9fd8b2;
+        background: #eaf9ef;
+        color: #0f6f34;
+        font-size: 0.92rem;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    .testimonial-stars {
+        margin: 0 0 8px;
+        color: #f2ab00;
+        letter-spacing: 3px;
+        font-size: 1.1rem;
+    }
+
+    .testimonial-card p {
+        margin-bottom: 0;
+        color: #1e2a38;
+        line-height: 1.58;
+        font-size: 1.01rem;
+    }
+
+    @@media (max-width: 576px) {
+        .testimonials-section {
+            padding: 20px;
+            border-radius: 14px;
+        }
+    }
+
+    @@media (max-width: 991px) {
+        .testimonials-top {
+            flex-direction: column;
+        }
+
+        .testimonials-chips {
+            min-width: 0;
+            width: 100%;
+        }
+    }
+
+    @@media (max-width: 767px) {
+        .testimonials-toolbar {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .testimonial-author {
+            font-size: 1.7rem;
+        }
+
+        .testimonials-section h2 {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+@if (ShouldRenderTestimonials)
+{
+<section class="testimonials-section">
+    <div class="testimonials-top">
+        <div class="testimonials-header">
+            <span class="testimonials-kicker">Family Testimonials</span>
+            <h2>What Families Are Saying</h2>
+            <p class="testimonials-subtitle">Real feedback from children and families supported by <strong>BeyondTheLabel Advocacy and Speech Therapy</strong>.</p>
+        </div>
+        <div class="testimonials-chips">
+            <a class="rating-chip-link"
+               href="@ReviewsUrl"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Open Google Reviews">
+                <div class="rating-chip">
+                    <span class="rating-chip-stars">★★★★★</span>
+                    <span class="rating-chip-label">Google Reviews</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="testimonials-toolbar">
+        <p class="testimonials-count">Showing @DisplayedReviewCount most recent reviews</p>
+        <div class="testimonials-actions">
+            <button type="button" class="testimonial-nav" @onclick="ScrollPreviousAsync" aria-label="Previous reviews">‹</button>
+            <button type="button" class="testimonial-nav" @onclick="ScrollNextAsync" aria-label="Next reviews">›</button>
+            <a class="testimonials-show-all"
+               target="_blank"
+               rel="noopener noreferrer"
+               href="@ReviewsUrl">
+                Show all
+            </a>
+        </div>
+    </div>
+
+    <div class="testimonials-scroll" id="reviews-rail" @ref="reviewsRail">
+        @foreach (var review in DisplayedReviews)
+        {
+            <div class="testimonial-item">
+                <a class="testimonial-link"
+                   href="@ReviewsUrl"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="@($"Read Google review by {review.Author}")">
+                    <div class="testimonial-card">
+                        <div class="testimonial-card-head">
+                            <p class="testimonial-author">@review.Author</p>
+                            <span class="testimonial-badge">✔ Verified Review</span>
+                        </div>
+                        <p class="testimonial-stars">★★★★★</p>
+                        @if (!string.IsNullOrWhiteSpace(review.Text))
+                        {
+                            <p>"@review.Text"</p>
+                        }
+                        else
+                        {
+                            <p>Review available on Google.</p>
+                        }
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+
+</section>
+}
+
+@code {
+    [Parameter] public bool IsHomeSection { get; set; }
+    private const string ReviewsUrl = "https://www.google.com/search?q=beyondthelabel+los+angeles&rlz=1C1VDKB_enUS1087US1087&oq=beyondthelabel+los+angeles&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIKCAEQABgKGBYYHjINCAIQABiGAxiABBiKBTIKCAMQABiABBiiBDIHCAQQABjvBTIHCAUQABjvBTIKCAYQABiiBBiJBdIBCDQzNzRqMGo0qAIDsAIB8QXIUuTuBB8-SvEFyFLk7gQfPko&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x80c2bb5547079631:0x8a5f8cd477a0b238,1,,,,";
+
+    private List<GoogleReview> reviews = new();
+    private ElementReference reviewsRail;
+    private IEnumerable<GoogleReview> DisplayedReviews => reviews.Take(20);
+    private int DisplayedReviewCount => Math.Min(reviews.Count, 20);
+    private bool ShouldRenderTestimonials => IsHomeSection || !IsHomeRoute;
+    private bool IsHomeRoute
+    {
+        get
+        {
+            var relativePath = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+            var routePath = relativePath.Split('?', '#')[0].Trim('/');
+            return string.IsNullOrEmpty(routePath);
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += HandleLocationChanged;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            reviews = await Http.GetFromJsonAsync<List<GoogleReview>>("reviews/google-reviews.json") ?? new List<GoogleReview>();
+        }
+        catch
+        {
+            reviews = new List<GoogleReview>();
+        }
+    }
+
+    private void HandleLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private Task ScrollPreviousAsync()
+        => JS.InvokeVoidAsync("scrollTestimonialsRail", reviewsRail, -1).AsTask();
+
+    private Task ScrollNextAsync()
+        => JS.InvokeVoidAsync("scrollTestimonialsRail", reviewsRail, 1).AsTask();
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= HandleLocationChanged;
+    }
+
+    private class GoogleReview
+    {
+        [JsonPropertyName("author")]
+        public string Author { get; set; } = string.Empty;
+
+        [JsonPropertyName("relativeDate")]
+        public string RelativeDate { get; set; } = string.Empty;
+
+        [JsonPropertyName("text")]
+        public string Text { get; set; } = string.Empty;
+
+        [JsonPropertyName("profileUrl")]
+        public string? ProfileUrl { get; set; }
+    }
+}
