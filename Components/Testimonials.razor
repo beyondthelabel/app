@@ -47,10 +47,8 @@
     }
 
     .testimonials-chips {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(160px, 1fr));
-        gap: 12px;
-        min-width: 360px;
+        display: flex;
+        min-width: 220px;
     }
 
     .rating-chip {
@@ -59,6 +57,18 @@
         border-radius: 16px;
         padding: 13px 12px;
         text-align: center;
+        min-width: 220px;
+    }
+
+    .rating-chip-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
+    .rating-chip-link:hover .rating-chip {
+        box-shadow: 0 8px 14px rgba(31, 78, 140, 0.12);
+        transform: translateY(-1px);
     }
 
     .rating-chip-stars {
@@ -257,18 +267,16 @@
             <p class="testimonials-subtitle">Real feedback from children and families supported by <strong>BeyondTheLabel Advocacy and Speech Therapy</strong>.</p>
         </div>
         <div class="testimonials-chips">
-            <div class="rating-chip">
-                <span class="rating-chip-stars">★★★★★</span>
-                <span class="rating-chip-label">Speech Therapy</span>
-            </div>
-            <div class="rating-chip">
-                <span class="rating-chip-stars">★★★★★</span>
-                <span class="rating-chip-label">Family Advocacy</span>
-            </div>
-            <div class="rating-chip">
-                <span class="rating-chip-stars">★★★★★</span>
-                <span class="rating-chip-label">Google Reviews</span>
-            </div>
+            <a class="rating-chip-link"
+               href="@ReviewsUrl"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Open Google Reviews">
+                <div class="rating-chip">
+                    <span class="rating-chip-stars">★★★★★</span>
+                    <span class="rating-chip-label">Google Reviews</span>
+                </div>
+            </a>
         </div>
     </div>
 
