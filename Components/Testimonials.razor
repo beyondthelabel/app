@@ -1,7 +1,9 @@
 @using Microsoft.AspNetCore.Components
 @using System.Text.Json.Serialization
+@using Microsoft.JSInterop
 @implements IDisposable
 @inject HttpClient Http
+@inject IJSRuntime JS
 @inject NavigationManager NavigationManager
 
 <style>
@@ -114,6 +116,7 @@
         height: 32px;
         border: 1px solid #a7c2e2;
         border-radius: 4px;
+        background: #ffffff;
         color: #1f4e8c;
         text-decoration: none;
         display: inline-flex;
@@ -121,6 +124,7 @@
         justify-content: center;
         font-size: 1.1rem;
         line-height: 1;
+        cursor: pointer;
     }
 
     .testimonials-show-all {
@@ -287,8 +291,8 @@
     <div class="testimonials-toolbar">
         <p class="testimonials-count">Showing @DisplayedReviewCount most recent reviews</p>
         <div class="testimonials-actions">
-            <a class="testimonial-nav" href="#reviews-rail" aria-label="Previous reviews">‹</a>
-            <a class="testimonial-nav" href="#reviews-rail" aria-label="Next reviews">›</a>
+            <button type="button" class="testimonial-nav" @onclick="ScrollPreviousAsync" aria-label="Previous reviews">‹</button>
+            <button type="button" class="testimonial-nav" @onclick="ScrollNextAsync" aria-label="Next reviews">›</button>
             <a class="testimonials-show-all"
                target="_blank"
                rel="noopener noreferrer"
@@ -298,7 +302,7 @@
         </div>
     </div>
 
-    <div class="testimonials-scroll" id="reviews-rail">
+    <div class="testimonials-scroll" id="reviews-rail" @ref="reviewsRail">
         @foreach (var review in DisplayedReviews)
         {
             <div class="testimonial-item">
@@ -335,6 +339,7 @@
     private const string ReviewsUrl = "https://www.google.com/search?q=beyondthelabel+los+angeles&rlz=1C1VDKB_enUS1087US1087&oq=beyondthelabel+los+angeles&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIKCAEQABgKGBYYHjINCAIQABiGAxiABBiKBTIKCAMQABiABBiiBDIHCAQQABjvBTIHCAUQABjvBTIKCAYQABiiBBiJBdIBCDQzNzRqMGo0qAIDsAIB8QXIUuTuBB8-SvEFyFLk7gQfPko&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x80c2bb5547079631:0x8a5f8cd477a0b238,1,,,,";
 
     private List<GoogleReview> reviews = new();
+    private ElementReference reviewsRail;
     private IEnumerable<GoogleReview> DisplayedReviews => reviews.Take(20);
     private int DisplayedReviewCount => Math.Min(reviews.Count, 20);
     private bool ShouldRenderTestimonials => IsHomeSection || !IsHomeRoute;
@@ -369,6 +374,12 @@
     {
         InvokeAsync(StateHasChanged);
     }
+
+    private Task ScrollPreviousAsync()
+        => JS.InvokeVoidAsync("scrollTestimonialsRail", reviewsRail, -1).AsTask();
+
+    private Task ScrollNextAsync()
+        => JS.InvokeVoidAsync("scrollTestimonialsRail", reviewsRail, 1).AsTask();
 
     public void Dispose()
     {
