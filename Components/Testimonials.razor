@@ -1,6 +1,7 @@
 @using Microsoft.AspNetCore.Components
 @using System.Text.Json.Serialization
 @inject HttpClient Http
+@inject NavigationManager NavigationManager
 
 <style>
     .testimonials-section {
@@ -259,6 +260,8 @@
     }
 </style>
 
+@if (ShouldRenderTestimonials)
+{
 <section class="testimonials-section">
     <div class="testimonials-top">
         <div class="testimonials-header">
@@ -324,6 +327,7 @@
     </div>
 
 </section>
+}
 
 @code {
     [Parameter] public bool IsHomeSection { get; set; }
@@ -332,6 +336,16 @@
     private List<GoogleReview> reviews = new();
     private IEnumerable<GoogleReview> DisplayedReviews => reviews.Take(20);
     private int DisplayedReviewCount => Math.Min(reviews.Count, 20);
+    private bool ShouldRenderTestimonials => IsHomeSection || !IsHomeRoute;
+    private bool IsHomeRoute
+    {
+        get
+        {
+            var relativePath = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+            var routePath = relativePath.Split('?', '#')[0].Trim('/');
+            return string.IsNullOrEmpty(routePath);
+        }
+    }
 
     protected override async Task OnInitializedAsync()
     {
