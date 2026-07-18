@@ -1,5 +1,6 @@
 @using Microsoft.AspNetCore.Components
 @using System.Text.Json.Serialization
+@implements IDisposable
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
 
@@ -347,6 +348,11 @@
         }
     }
 
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += HandleLocationChanged;
+    }
+
     protected override async Task OnInitializedAsync()
     {
         try
@@ -357,6 +363,16 @@
         {
             reviews = new List<GoogleReview>();
         }
+    }
+
+    private void HandleLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= HandleLocationChanged;
     }
 
     private class GoogleReview
