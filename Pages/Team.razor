@@ -14,6 +14,16 @@
         margin: 0 0 20px;
     }
 
+    .service-setting-text {
+        margin-top: -12px;
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+        color: #6c757d;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        text-align: center;
+    }
+
     p {
         text-align: left;
         margin: 0 auto;
@@ -97,6 +107,11 @@
             <h1>@info.Role</h1>
         }
 
+        @if (!string.IsNullOrEmpty(info.ServiceSetting))
+        {
+            <div class="service-setting-text">@info.ServiceSetting</div>
+        }
+
         @if (!string.IsNullOrEmpty(info.Title))
         {
             <h2>@info.Title</h2>
@@ -150,6 +165,7 @@
         // Only used in the welcome section
         public string? Name { get; set; }
         public string? Role { get; set; }
+        public string? ServiceSetting { get; set; }
 
         public List<SocialLink>? SocialLinks { get; set; }
     }
@@ -172,6 +188,7 @@
         ImageAltText = "Dori Cohen",
         ImageCssClass = "profile-picture img-fluid",
         Role = "Speech Language Pathologist Assistant",
+        ServiceSetting = "In-Home",
         Name = "Dori Cohen",
         Paragraph = "Welcome! I'm <strong>Dori Cohen</strong>. I'm passionate about language, human connection, and helping others through speech-language pathology.",
         SocialLinks = null
@@ -244,6 +261,7 @@
         ImageAltText = "Ashley Solano",
         ImageCssClass = "profile-picture img-fluid",
         Role = "Clinical Fellow Speech-Language Pathologist (CF-SLP)",
+        ServiceSetting = "In-Home",
         Name = "Ashley Solano",
         Paragraph = "Hi, I'm <strong>Ashley Solano</strong>! I am an in-home Clinical Fellow Speech-Language Pathologist (CF-SLP) with a passion for early intervention and Augmentative and Alternative Communication (AAC). I am dedicated to helping young children and their families build meaningful communication skills through individualized, evidence-based support.",
         SocialLinks = null
@@ -283,6 +301,7 @@
         ImageAltText = "Madison Manwarring",
         ImageCssClass = "profile-picture img-fluid",
         Role = "Speech Language Pathologist Assistant",
+        ServiceSetting = "In-Clinic / In-Home",
         Name = "Madison Manwarring",
         Paragraph = "Hi there! My name is <strong>Madison Manwarring</strong>. I’m passionate about literacy and language development, AAC, and neurodiversity-affirming practices that empower every client’s true voice.",
         SocialLinks = null
@@ -322,6 +341,7 @@
         ImageAltText = "Jade Vecvanags",
         ImageCssClass = "profile-picture img-fluid",
         Role = "Speech Language Pathologist",
+        ServiceSetting = "Virtual",
         Name = "Jade Vecvanags",
         Paragraph = "Hi, I'm <strong>Jade Vecvanags</strong>. I'm passionate about accessibility, connection, and fostering community through collaboration, education, and direct support.",
         SocialLinks = null
