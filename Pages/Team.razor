@@ -14,6 +14,16 @@
         margin: 0 0 20px;
     }
 
+    .scope-text {
+        margin-top: -12px;
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+        color: #6c757d;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        text-align: center;
+    }
+
     p {
         text-align: left;
         margin: 0 auto;
@@ -97,6 +107,11 @@
             <h1>@info.Role</h1>
         }
 
+        @if (!string.IsNullOrEmpty(info.Scope))
+        {
+            <div class="scope-text">@info.Scope</div>
+        }
+
         @if (!string.IsNullOrEmpty(info.Title))
         {
             <h2>@info.Title</h2>
@@ -150,6 +165,7 @@
         // Only used in the welcome section
         public string? Name { get; set; }
         public string? Role { get; set; }
+        public string? Scope { get; set; }
 
         public List<SocialLink>? SocialLinks { get; set; }
     }
@@ -171,7 +187,8 @@
         ImageUrl = "media/images/dori_cohen.jpg",
         ImageAltText = "Dori Cohen",
         ImageCssClass = "profile-picture img-fluid",
-        Role = "In home therapist",
+        Role = "Speech Language Pathologist Assistant",
+        Scope = "In Home Therapist",
         Name = "Dori Cohen",
         Paragraph = "Welcome! I'm <strong>Dori Cohen</strong>. I'm passionate about language, human connection, and helping others through speech-language pathology.",
         SocialLinks = null
@@ -243,7 +260,8 @@
         ImageUrl = "media/images/ashley_solano.jpg",
         ImageAltText = "Ashley Solano",
         ImageCssClass = "profile-picture img-fluid",
-        Role = "In home therapist",
+        Role = "Speech Language Pathologist Assistant",
+        Scope = "In Home Therapist",
         Name = "Ashley Solano",
         Paragraph = "Hi, I'm <strong>Ashley Solano</strong>. I'm passionate about early intervention and AAC for pediatric speech and language support.",
         SocialLinks = null
@@ -282,7 +300,8 @@
         ImageUrl = "media/images/madison_manwarring.png",
         ImageAltText = "Madison Manwarring",
         ImageCssClass = "profile-picture img-fluid",
-        Role = "In clinic/ In home",
+        Role = "Speech Language Pathologist Assistant",
+        Scope = "In Clinic / In Home",
         Name = "Madison Manwarring",
         Paragraph = "Hi there! My name is <strong>Madison Manwarring</strong>. I’m passionate about literacy and language development, AAC, and neurodiversity-affirming practices that empower every client’s true voice.",
         SocialLinks = null
@@ -321,7 +340,8 @@
         ImageUrl = "media/images/jade_vecvanags.jpg",
         ImageAltText = "Jade Vecvanags",
         ImageCssClass = "profile-picture img-fluid",
-        Role = "virtual",
+        Role = "Speech Language Pathologist",
+        Scope = "Virtual",
         Name = "Jade Vecvanags",
         Paragraph = "Hi, I'm <strong>Jade Vecvanags</strong>. I'm passionate about accessibility, connection, and fostering community through collaboration, education, and direct support.",
         SocialLinks = null
