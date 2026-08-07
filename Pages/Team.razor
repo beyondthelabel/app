@@ -132,8 +132,7 @@
             <div class="social-links">
                 @foreach (var link in info.SocialLinks)
                 {
-                    var isEmailLink = IsEmailLink(link.Url);
-                    <a href="@link.Url" target="@(isEmailLink ? null : "_blank")" aria-label="@link.AriaLabel">
+                    <a href="@link.Url" aria-label="@link.AriaLabel">
                         @if (!string.IsNullOrEmpty(link.IconClass))
                         {
                             <i class="@link.IconClass"></i>
@@ -180,9 +179,6 @@
         public string? IconClass { get; set; }
         public string? AriaLabel { get; set; }
     }
-
-    private static bool IsEmailLink(string? url) =>
-        !string.IsNullOrEmpty(url) && url.StartsWith("mailto:", StringComparison.OrdinalIgnoreCase);
 
     List<SectionModel> Sections = new()
     {
