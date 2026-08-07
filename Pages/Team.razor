@@ -138,10 +138,6 @@
                         {
                             <i class="@link.IconClass"></i>
                         }
-                        @if (isEmailLink)
-                        {
-                            @GetEmailFromLink(link.Url)
-                        }
                     </a>
                 }
             </div>
@@ -187,9 +183,6 @@
 
     private static bool IsEmailLink(string? url) =>
         !string.IsNullOrEmpty(url) && url.StartsWith("mailto:", StringComparison.OrdinalIgnoreCase);
-
-    private static string GetEmailFromLink(string? url) =>
-        IsEmailLink(url) ? url!["mailto:".Length..] : string.Empty;
 
     List<SectionModel> Sections = new()
     {
