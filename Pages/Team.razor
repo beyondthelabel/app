@@ -132,8 +132,16 @@
             <div class="social-links">
                 @foreach (var link in info.SocialLinks)
                 {
-                    <a href="@link.Url" target="_blank" aria-label="@link.AriaLabel">
-                        <i class="@link.IconClass"></i>
+                    var isEmailLink = IsEmailLink(link.Url);
+                    <a href="@link.Url" target="@(isEmailLink ? null : "_blank")" aria-label="@link.AriaLabel">
+                        @if (!string.IsNullOrEmpty(link.IconClass))
+                        {
+                            <i class="@link.IconClass"></i>
+                        }
+                        @if (isEmailLink)
+                        {
+                            @GetEmailFromLink(link.Url)
+                        }
                     </a>
                 }
             </div>
@@ -176,6 +184,13 @@
         public string? IconClass { get; set; }
         public string? AriaLabel { get; set; }
     }
+
+    private static bool IsEmailLink(string? url) =>
+        !string.IsNullOrEmpty(url) && url.StartsWith("mailto:", StringComparison.OrdinalIgnoreCase);
+
+    private static string GetEmailFromLink(string? url) =>
+        IsEmailLink(url) ? url!["mailto:".Length..] : string.Empty;
+
     List<SectionModel> Sections = new()
     {
 
@@ -425,7 +440,7 @@
             new SocialLink
             {
                 Url = "mailto:mlopez.beyondthelabel@gmail.com",
-                IconClass = "fas fa-envelope",
+                IconClass = null,
                 AriaLabel = "Email Mayra A. Lopez"
             }
         }
