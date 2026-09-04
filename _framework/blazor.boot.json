@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "BeyondTheLabel",
   "resources": {
-    "hash": "sha256-Vx6RZC0aqfh14dVbuRZwAqSkaPd1mUJnFn244MhWVyY=",
+    "hash": "sha256-7ayV1tXDe2lHcDW9CY1uV3xAEZfAxL4ZcYV8cd9tSJc=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Components.l97brm77tt.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Web.m82a7h72lk.wasm": "Microsoft.AspNetCore.Components.Web.wasm",
@@ -35,7 +35,7 @@
       "System.Text.Json.dfjpjid6co.wasm": "System.Text.Json.wasm",
       "System.Text.RegularExpressions.nx73kmrs9d.wasm": "System.Text.RegularExpressions.wasm",
       "System.Private.CoreLib.f1yf1bb6vf.wasm": "System.Private.CoreLib.wasm",
-      "BeyondTheLabel.qvzr5v6mfc.wasm": "BeyondTheLabel.wasm",
+      "BeyondTheLabel.1akh825nwc.wasm": "BeyondTheLabel.wasm",
       "dotnet.js": "dotnet.js",
       "dotnet.native.wlvwu26j41.js": "dotnet.native.js",
       "dotnet.native.kiufslnrq2.wasm": "dotnet.native.wasm",
@@ -93,7 +93,7 @@
       "System.Text.Encodings.Web.9z8q031cjx.wasm": "sha256-C1Ss8qePT8zGxRGw8kTkj4LWpMl4X/4J6QJT/0LDsbg=",
       "System.Text.Json.dfjpjid6co.wasm": "sha256-ZwaC0QiRWUjYLCGRwcCNTsyr0asQGddonuZMM3lk3rQ=",
       "System.Text.RegularExpressions.nx73kmrs9d.wasm": "sha256-FVlQhZOTFhS6RX8Bd7ulBgips4mGmRGAxWixue4XkDY=",
-      "BeyondTheLabel.qvzr5v6mfc.wasm": "sha256-Zs/A8zjXE4BVY6QS2DHBLVCyrKcjXsMlLKS+eYIeQAA="
+      "BeyondTheLabel.1akh825nwc.wasm": "sha256-Fx/+JlKTVxHUj/QY9fgX6CELb5+CXzdYHfB4lCRAJvE="
     }
   },
   "cacheBootResources": true,
